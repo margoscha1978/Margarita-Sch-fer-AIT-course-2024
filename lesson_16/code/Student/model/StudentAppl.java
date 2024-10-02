@@ -9,7 +9,6 @@ public class StudentAppl {
         Student student4= new Student(4,"Antonia","Schmidt",16,"computer science");
         Student student5 = new Student(5,"Antonix","Smiedt",16,"physics");
 
-      //System.out.println("\nProzess of studyng...");
         student1.exam();
         student2.studing();
         student3.vacation();
