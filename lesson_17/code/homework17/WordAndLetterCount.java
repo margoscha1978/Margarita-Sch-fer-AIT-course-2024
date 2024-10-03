@@ -1,3 +1,5 @@
+package homework17;
+
 public class WordAndLetterCount {
     public static void main(String[] args) {
         String text =  "В 1800-х годах, в те времена, когда не было еще ни железных, ни шоссейных дорог, ни газового," +

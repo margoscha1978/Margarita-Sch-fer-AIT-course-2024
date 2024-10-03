@@ -1,3 +1,5 @@
+package homework17;
+
 import java.util.Scanner;
 
 public class QuadraticEquationSolver {
