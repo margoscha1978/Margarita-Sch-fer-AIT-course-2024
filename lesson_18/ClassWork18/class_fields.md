@@ -38,3 +38,8 @@
 - private String email;
 - private String work;//obrazovanie,professija
 - private double phoneNumber;//nomer telefona
+
+- public,ispolsujut dlja perekrestnoi raboti klassov v super klasse;
+- privat ne daet takuju vozmocshnost;
+
+- klass,nasleduet polja i metodi super-klassa(poditekskogo klassa);
