@@ -2,7 +2,7 @@ package homework17;
 
 public class WordAndLetterCount {
     public static void main(String[] args) {
-        String text =  "В 1800-х годах, в те времена, когда не было еще ни железных, ни шоссейных дорог, ни газового," +
+        String text = "В 1800-х годах, в те времена, когда не было еще ни железных, ни шоссейных дорог, ни газового," +
                 " ни стеаринового света, ни пружинных низких диванов, ни мебели без лаку," +
                 " ни разочарованных юношей со стеклышками, ни либеральных философов-женщин, ни милых дам-камелий, которых так много развелось в наше время," +
                 " – в те наивные времена, когда из Москвы, выезжая в Петербург в повозке или карете, " +
@@ -25,8 +25,8 @@ public class WordAndLetterCount {
 
         //schitaem bukvi
         int letterCount = 0;
-        for (char c : text.toCharArray()){
-            if (Character.isLetter(c)){
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
                 letterCount++;
             }
         }
