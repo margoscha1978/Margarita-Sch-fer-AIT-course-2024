@@ -1,15 +1,20 @@
-public class Computer {
-    //  - cpu
-    //- ram
-   //- ssd
-   //- brand
-   //- price
+package ClassWork19.compare_string;
 
-private String cpu;
-private int ram;
-private int ssd;
-private String brand;
-private double price;
+//- cpu
+//- ram
+//- ssd
+//- brand
+//- price
+
+import java.util.Objects;
+
+public class Computer {
+
+    private String cpu;
+    private int ram;
+    private int ssd;
+    private String brand;
+    private double price;
 
     public Computer(String cpu, int ram, int ssd, String brand, double price) {
         this.cpu = cpu;
@@ -61,12 +66,24 @@ private double price;
 
     @Override
     public String toString() {
-        return "Conputer{" +
+        return "Computer{" +
                 "cpu='" + cpu + '\'' +
                 ", ram=" + ram +
                 ", ssd=" + ssd +
                 ", brand='" + brand + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // сравниваем объект сам с собой, возвращаем true
+        if (!(o instanceof Computer computer)) return false; // это объект не из клаcса Computer, возвращаем false
+        return ram == computer.ram && ssd == computer.ssd && Double.compare(price, computer.price) == 0 && Objects.equals(cpu, computer.cpu) && Objects.equals(brand, computer.brand);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cpu, ram, ssd, brand, price);
     }
 }

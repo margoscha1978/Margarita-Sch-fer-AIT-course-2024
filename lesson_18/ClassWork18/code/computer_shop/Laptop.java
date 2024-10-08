@@ -1,15 +1,17 @@
-public class Laptop extends Computer {
+package computer_shop;
 
-   private double displaySize;
-   private double weight;
-   private int battaryLife;
-   private String color;
+public class Laptop extends Computer{
 
-    public Laptop(String cpu, int ram, int ssd, String brand, double price, double displaySize, double weight, int battaryLife, String color) {
+    private double displaySize;
+    private double weight;
+    private int batteryLife;
+    private String color;
+
+    public Laptop(String cpu, int ram, int ssd, String brand, double price, double displaySize, double weight, int batteryLife, String color) {
         super(cpu, ram, ssd, brand, price);
         this.displaySize = displaySize;
         this.weight = weight;
-        this.battaryLife = battaryLife;
+        this.batteryLife = batteryLife;
         this.color = color;
     }
 
@@ -29,12 +31,12 @@ public class Laptop extends Computer {
         this.weight = weight;
     }
 
-    public int getBattaryLife() {
-        return battaryLife;
+    public int getBatteryLife() {
+        return batteryLife;
     }
 
-    public void setBattaryLife(int battaryLife) {
-        this.battaryLife = battaryLife;
+    public void setBatteryLife(int batteryLife) {
+        this.batteryLife = batteryLife;
     }
 
     public String getColor() {
@@ -50,8 +52,8 @@ public class Laptop extends Computer {
         return "Laptop{" +
                 "displaySize=" + displaySize +
                 ", weight=" + weight +
-                ", battaryLife=" + battaryLife +
+                ", batteryLife=" + batteryLife +
                 ", color='" + color + '\'' +
-                "}" + super.toString();
+                "} " + super.toString();
     }
 }
