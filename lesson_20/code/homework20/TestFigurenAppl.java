@@ -3,7 +3,7 @@ package homework20;
 // Добавьте в массив два круга, один треугольник и один квадрат.
 // Рассчитайте общую площадь и общий периметр всех фигур из массива фигур.
 
-public class TestFigirenAppl {
+public class TestFigurenAppl {
     public static void main(String[] args) {
         Shape[] shapes = new Shape[4];
 

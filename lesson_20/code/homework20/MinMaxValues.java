@@ -1,4 +1,9 @@
 package homework20;
+//. Напишите приложение, которое выводит минимальные/максимальные числовые значения примитивных типов:
+// byte, short, char, int, long, float, double Типы как объекты String должны браться из аргументов основной функции main.
+// Если в аргументах нет какого-либо типа (не указан тип), приложение должно вывести максимальное/минимальное значения 7 типов
+// (byte, int, short, long, char, float, double).
+// Если аргументы содержат неправильный тип, приложение должно вывести сообщение: Неверный тип.
 
 public class MinMaxValues {
     public static void main(String[] args) {
@@ -19,10 +24,15 @@ public class MinMaxValues {
     // Метод для вывода минимальных и максимальных значений для всех типов
     private static void printAllMinMax() {
         System.out.println("Тип: byte, Минимум: " + Byte.MIN_VALUE + ", Максимум: " + Byte.MAX_VALUE);
+
         System.out.println("Тип: short, Минимум: " + Short.MIN_VALUE + ", Максимум: " + Short.MAX_VALUE);
+
         System.out.println("Тип: char, Минимум: " + (int) Character.MIN_VALUE + ", Максимум: " + (int) Character.MAX_VALUE);
+
         System.out.println("Тип: int, Минимум: " + Integer.MIN_VALUE + ", Максимум: " + Integer.MAX_VALUE);
+
         System.out.println("Тип: float, Минимум: " + Float.MIN_VALUE + ", Максимум: " + Float.MAX_VALUE);
+
         System.out.println("Тип: double, Минимум: " + Double.MIN_VALUE + ", Максимум: " + Double.MAX_VALUE);
     }
 
