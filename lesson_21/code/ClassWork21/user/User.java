@@ -1,14 +1,13 @@
 package ClassWork21.user;
 
 public class User {
-
     private String email;
     private String password;
 
-    //konstruktor programm
+    //constructor
     public User(String email, String password) {
-       setEmail(email ); // this.email = email;
-       setPassword(password ); //this.password = password;
+        setEmail(email);
+        setPassword(password);
     }
 
     public String getEmail() {
@@ -16,15 +15,18 @@ public class User {
     }
 
     public void setEmail(String email) {
-        if (isEmailWalid(email)){
+        if(isEmailValid(email)){
             this.email = email;
         } else {
-            System.out.println(email + " is not valid.");
+            System.out.println(email + " is NOT valid.");
         }
+
     }
 
-    private boolean isEmailWalid(String email) {
+    private boolean isEmailValid(String email) {
+
         int indexAt = email.indexOf('@'); // index where @ placed
+
         if(indexAt == -1 || indexAt != email.lastIndexOf('@')){
             return false;
         }
@@ -52,3 +54,4 @@ public class User {
         this.password = password;
     }
 }
+

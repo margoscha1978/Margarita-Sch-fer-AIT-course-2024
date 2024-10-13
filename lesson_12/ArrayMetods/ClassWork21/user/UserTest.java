@@ -6,74 +6,48 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
-
     User user;
-    final String email = "peter@mail.de";//podxodjaschii mail
-    final String password = "123456Az!";//podxodjaschii paroli
+
+    final String email = "peter@mail.de"; // ideal email
+    final String password = "123456Az!"; // ideal password
+
 
     @BeforeEach
     void setUp() {
-       user = new User(email, password );//kontrol vvodimix dannix
+        user = new User(email, password); // create new 'fresh' object user
     }
 
     @Test
     void testValidEmail(){
+
         user.setEmail(email);
-        assertEquals("peter@mail.de",user.getEmail()); //podtverschdenie maila
+        assertEquals("peter@mail.de", user.getEmail());
+
+    }
+
+
+    @Test
+    void setEmailNoAt() {
+        String email = "petermail.de"; // wrong email
+        user.setEmail(email);
+        assertEquals("peter@mail.de", user.getEmail()); // email didn't change
+
     }
 
     @Test
-    void setEmail() {
-        String email = "petermail.de";// oschibka vo vvode propustil znak @
-        user.setEmail(email);
-        assertEquals("peter@mail.de",user.getEmail()); //sravnenie so standartom
+    void setEmailNoDot(){
+
     }
 
     @Test
-    void setEmailnoDot(){ //poterjalas tochka
-        String email = "petermail@de";
-        user.setEmail(email);
-        assertEquals("peter@mail.de",user.getEmail()); // sravnenie so standartom
+    void setEmailNoLetter(){
 
     }
-    @Test
-    void setEmailnoLeeters(){
-        String email = "peermail@.de";// propustil bukvu
-        user.setEmail(email);
-        assertEquals("peter@mail.de",user.getEmail());
-    }
-@Test
-void setEmailmixedSingt(){
-    String email = "petermail@,de"; //pereputal znak,zapjataja vmesto tochka
-    user.setEmail(email);
-    assertEquals("peter@mail.de",user.getEmail());
-}
-@Test
-void setEmailaddedSpace(){
-  String email = "peter@mail. de"; // lischnii probel
-    user.setEmail(email);
-    assertEquals("peter@mail.de",user.getEmail());
-}
-@Test
-void setEmailInkorrektSign(){
-   // String email = "pete@rmail.de"; // @ stoit neverno,tect upal
-   // String email = "petermail@.de";
-   // String email = "pteer@mail.de"; // pomehjal bujvi mestami
-   // String email = "Peter@mail.de";
-    String email = "peter@mail..de";
-    user.setEmail(email);
-    assertEquals("peter@mail.de",user.getEmail());
-}
-
 
     @Test
     void setPassword() {
 
     }
+
 }
 
-// - email requirements:
-// 1) @ exists and only one
-// 2) dot after @ User
-// 3) after last dot 2 or more symbols
-// 4) alphabetic, digits, '_', '-', '.', '@'
