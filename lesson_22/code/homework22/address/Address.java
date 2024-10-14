@@ -1,4 +1,8 @@
 package homework22.address;
+//Задача 3.(*) Создать класс Address, проверить:
+//    город с большой буквы
+//    индекс содержит 5 цифр
+//    предложите еще тесты
 
 public class Address {
     private String city;

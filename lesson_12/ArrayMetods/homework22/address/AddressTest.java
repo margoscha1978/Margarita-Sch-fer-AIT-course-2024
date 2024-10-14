@@ -26,20 +26,20 @@ class AddressTest {
     @Test
     public void testPostalCodeValidation() {
         // Позитивные случаи
-        Address address1 = new Address("Москва", "12345");
+        Address address1 = new Address("München", "12345");
         assertTrue(address1.isPostalCodeValid(), "Индекс должен состоять из 5 цифр");
 
         // Негативные случаи
-        Address address2 = new Address("Москва", "1234");
+        Address address2 = new Address("München", "1234a");
         assertFalse(address2.isPostalCodeValid(), "Индекс должен содержать 5 цифр");
 
-        Address address3 = new Address("Москва", "123456");
+        Address address3 = new Address("München", "123*56");
         assertFalse(address3.isPostalCodeValid(), "Индекс должен содержать 5 цифр");
 
-        Address address4 = new Address("Москва", "abcde");
+        Address address4 = new Address("München", "a3c7?");
         assertFalse(address4.isPostalCodeValid(), "Индекс должен состоять только из цифр");
 
-        Address address5 = new Address("Москва", null);
+        Address address5 = new Address("München", null);
         assertFalse(address5.isPostalCodeValid(), "Индекс не может быть null");
     }
 }

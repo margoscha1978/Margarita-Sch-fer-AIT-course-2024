@@ -9,12 +9,11 @@ public class Book {
     // жанр genre
     // В классе Book реализуйте конструктор, геттеры и сеттеры на все поля и метод display, который выводит информацию о книге.
     //Создайте конструктор, в котором нет поля ISBN. Создайте конструктор, в котором есть только поля title, author и genre.
-
-private int id;
-private String title;
-private String autor;
-private int yearOfPublishing;
-private String genre;
+    private final int id;
+    private String title;
+    private String autor;
+    private int yearOfPublishing;
+    private String genre;
 
 //construktor
     public Book(int id, String title, String autor, int yearOfPublishing, String genre) {
@@ -63,4 +62,11 @@ private String genre;
                 '}';
     }
 
+    public int getYearOfPublishing() {
+        return yearOfPublishing;
+    }
+
+    public void setYearOfPublishing(int yearOfPublishing) {
+        this.yearOfPublishing = yearOfPublishing;
+    }
 } //klass ende
