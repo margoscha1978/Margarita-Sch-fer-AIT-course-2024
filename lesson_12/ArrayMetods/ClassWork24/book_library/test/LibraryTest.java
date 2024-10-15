@@ -1,5 +1,6 @@
-package ClassWork24.book_library.controller;
+package ClassWork24.book_library.test;
 
+import ClassWork24.book_library.controller.Library;
 import ClassWork24.book_library.model.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
 
-   Library library;
+    Library library;
 
     Book[] books;
     int size = 0;
@@ -79,5 +80,6 @@ class LibraryTest {
         System.out.println("=========================");
         library.printBooks();
     }
+
 
 }
