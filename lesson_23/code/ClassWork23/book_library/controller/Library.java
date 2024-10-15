@@ -1,13 +1,12 @@
 package ClassWork23.book_library.controller;
 
-import homework_17book.model.Book;
+import ClassWork23.book_library.model.Book;
 
 public class Library {
 
     // fields
     private Book[] books;
     private int size; // текущее кол-во книг
-    private long isbn;
 
 
     // constructor
@@ -23,11 +22,15 @@ public class Library {
 
     // void printBooks()
 
+
     public Book findBook(long isbn){
-        this.isbn = isbn;
+
         Book foundBook = null;
-        return null;
+
+        return foundBook;
     }
+
+
 
     // Book removeBook(long isbn)
     // size--
@@ -39,4 +42,5 @@ public class Library {
         return size;
     }
 
-}//klass ende
+}
+

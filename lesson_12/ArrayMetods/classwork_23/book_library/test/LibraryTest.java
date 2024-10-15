@@ -1,4 +1,4 @@
-package ClassWork23.book_library.test;
+package classwork_23.book_library.test;
 
 import ClassWork23.book_library.controller.Library;
 import ClassWork23.book_library.model.Book;
@@ -29,12 +29,13 @@ class LibraryTest {
 
     @Test
     void findBookTest(){
-       homework_17book.model.Book foundBook = library.findBook(1_111_111_111_110L);
+        Book foundBook = library.findBook(1_111_111_111_110L);
         assertEquals( books[0], library.findBook(1_111_111_111_110L)); // find existed book
         assertNull(library.findBook(1_111_111_111_119L)); // find absent book
         //
 
     }
+
 
 
 
