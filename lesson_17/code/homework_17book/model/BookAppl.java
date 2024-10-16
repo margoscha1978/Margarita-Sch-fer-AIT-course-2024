@@ -12,4 +12,5 @@ public class BookAppl {
         book1.display();
         book2.display();
     }
+
 }//klass ende
