@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RegexValidationTest {
+class    RegexValidationTest {
 
     // Метод для проверки соответствия строки регулярному выражению
     private boolean validate(String input, String regex) {
