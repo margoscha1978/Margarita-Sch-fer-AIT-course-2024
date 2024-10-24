@@ -6,7 +6,7 @@ public class NonFoodProdukts extends Product  {
 
 private String produktType;
 
-    public NonFoodProdukts(double price, String name, long barCode, String produktType) {
+    public NonFoodProdukts(double price, String name, String barCode, String produktType) {
         super(price, name, barCode);
         this.produktType = produktType;
     }

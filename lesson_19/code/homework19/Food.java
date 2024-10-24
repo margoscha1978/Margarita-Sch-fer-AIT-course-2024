@@ -9,7 +9,7 @@ public class Food extends Product {
 
     private String expDate;//istechenie sroka godnosti
 
-    public Food(double price, String name, long barCode, String expDate) {
+    public Food(double price, String name, String barCode, String expDate) {
         super(price, name, barCode);
         this.expDate = expDate;
     }

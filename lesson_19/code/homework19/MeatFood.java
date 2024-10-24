@@ -9,7 +9,7 @@ public class MeatFood extends Food  {
 
     private String meatType;//tip mjasa ispolzovannogo pri izgotovlenii
 
-    public MeatFood(double price, String name, long barCode, String expDate, String meatType) {
+    public MeatFood(double price, String name, String barCode, String expDate, String meatType) {
         super(price, name, barCode, expDate);
         this.meatType = meatType;
     }

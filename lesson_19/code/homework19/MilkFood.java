@@ -10,7 +10,7 @@ public class MilkFood extends Food {
     private String milkType;//moloko
     private double fat;//schirnost produkta
 
-    public MilkFood(double price, String name, long barCode, String expDate, String milkType, double fat) {
+    public MilkFood(double price, String name, String barCode, String expDate, String milkType, double fat) {
         super(price, name, barCode, expDate);
         this.milkType = milkType;
         this.fat = fat;
