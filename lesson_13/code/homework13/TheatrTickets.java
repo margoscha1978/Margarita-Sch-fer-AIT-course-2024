@@ -46,3 +46,5 @@ public class TheatrTickets {
     }
 
 }// klass ende
+
+// сделать защиту от случайноговвода.например ноль
