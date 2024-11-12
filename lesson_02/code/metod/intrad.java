@@ -21,4 +21,5 @@ public class intrad {
    public static  void introduce(){
        System.out.println("Let me introduсe myself");
    }
-}
+
+} // klass ended

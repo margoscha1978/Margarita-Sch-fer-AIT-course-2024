@@ -2,25 +2,25 @@ import java.util.Scanner;
 
 public class StringManipulation {
     public static void main(String[] args) {
-        // skaner napisannogo
+        // сканируем то, что написал пользователь
         Scanner scanner = new Scanner(System.in);
         System.out.println( "Dial line: ");
         String userInput = scanner.nextLine();
 
-        // schitaem slova
+        // считаем слова
         String[] words = userInput.split( "\\s+");
         int wordCount = words.length;
 
-        //schitaem bukwi
+        // считаем буквы
         int letterCount = userInput.replace(" ","").length();
-        // perevorot stroki,clova
+        // переворот строки или слова
         String reversedString = new StringBuilder(userInput).reverse().toString();
 
-        //print
+        // print - печатаем
         System.out.println(" Number of words per line: " + wordCount);
         System.out.println(" Number of letters per line: " + letterCount);
         System.out.println( "Reverses a string: " + reversedString);
         System.out.println();
 
     }
-}
+} // klass ended

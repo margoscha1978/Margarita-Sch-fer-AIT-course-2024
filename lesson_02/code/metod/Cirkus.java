@@ -36,4 +36,5 @@ public class Cirkus {
         System.out.println("I am singing...");
 
     }
-}
+
+} // klass ended

@@ -1,7 +1,7 @@
 public class PerimeterRect {
     public static void main(String[] args) {
-
-        // P= a+a+b+b,P=(a+b)*2,P=a*2+b*2
+         // периметр прямоугольника
+         // P= a+a+b+b, P=(a+b)*2,P=a*2+b*2
 
         int a=1000;
         int b=2000;

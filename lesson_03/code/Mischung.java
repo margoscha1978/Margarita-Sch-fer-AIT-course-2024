@@ -1,12 +1,12 @@
 public class Mischung {
     public static void main(String[] args) {
-
+        //счетчик валют
         // money
         double money = 500;// dollars
         double euro = exchangeDollarsToEuro(money);
         System.out.println("Euro:" + euro);//ende
-
-        //calorage
+         // считаем калории
+         //calorage
         double weight = 200;//gramm
         double colorage = 50;//cal. pro 100gr
         double energie = calkulateCalorie(weight, colorage);

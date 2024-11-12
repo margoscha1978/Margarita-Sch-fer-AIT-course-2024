@@ -5,7 +5,8 @@ public class HalloWord {
 
         System.out.println("hello World!");
     }
-}
+
+} // klass ended
 
 
 

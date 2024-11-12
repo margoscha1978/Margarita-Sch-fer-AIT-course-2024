@@ -1,7 +1,7 @@
 public class Rectangle {
     public static void main(String[] args) {
-
-// S=a*b
+        // площадь прямоугольника
+        // S=a*b
 
                 double a = 125.37d;
                 double b = 35.0;

@@ -1,7 +1,7 @@
 public class Cirkle {
     public static void main(String[] args) {
-
- // S=PI*r²
+  // площадь круга
+  // S=PI*r²
 
  double r= 200;
  double PI= 3.14159;

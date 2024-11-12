@@ -1,15 +1,15 @@
 package ClassWork16.car_object.model;
 
-public class Car {
-    // zapros: zena,zwet,vozrast,god vipuska...
+public class Car1 {
+    // запрос: цена,цвет,возраст,год выпуска...
     private String brand;
     private int year;
     private double price;
     private String color;
     private boolean isNew;
 
-    //construktor - metod,nichego ne daet,nuchno ctroit
-    public Car(String brand, int year, double price, String color, boolean isNew) { // argumenti i faktori
+    //construktor - собственный метод самостоятельный,ни чего не дает и не добавляет,строит
+    public Car1(String brand, int year, double price, String color, boolean isNew) { // аргументы и факторы
         this.brand = brand;
         this.year = year;
         this.price = price;
@@ -17,7 +17,7 @@ public class Car {
         this.isNew = isNew;
     }
 
-    // getters and setters,poluchatel i ustanovschik,metodi dlja raboti,pravaja knopka mischki visivaet
+    // getters and setters,получатель и установщик,методы для работы,вызывает правая кнопка мыши
     public String getBrand() {
         return brand;
     }

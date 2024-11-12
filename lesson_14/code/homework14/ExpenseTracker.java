@@ -1,15 +1,16 @@
 package homework14;
 // Упражнение 1: Учёт расходов
-//Напишите программу, которая:
+// Напишите программу, которая:
 //1.Создаст список для хранения ежемесячных расходов на продукты (в евро) за 6 месяцев.
 //2.Выведет все расходы по месяцам.
 //3.Найдёт и выведет месяц с наибольшим расходом.
 //4.Удалит расходы, превышающие 300 евро.
-//5.Посчитает, сколько месяцев остались после удаления (размер списка).
+//5.Подсчитает, сколько месяцев остались после удаления (размер списка).
 
 import java.util.ArrayList;
 
 public class ExpenseTracker {
+    // создаем список для хранения ежемесячных расходов на продукты (в евро) за 6 месяцев.
     private ArrayList<String> months = new ArrayList<>();
     private ArrayList<Double> amounts = new ArrayList<>();
 
@@ -23,8 +24,8 @@ public class ExpenseTracker {
             System.out.println("Месяц: " + months.get(i) + ", Расходы: " + amounts.get(i));
         }
     }
-
-    public double getHighestExpense() {
+     // находим и выводим месяц с наибольшим расходом.
+    public double getHighestExpense() { // void getHighestExpense() { другая версия
         double max = 0;
         String month = "";
         for (int i = 0; i < amounts.size(); i++) {
@@ -36,7 +37,7 @@ public class ExpenseTracker {
         System.out.println("Самые большие расходы в месяце: " + month + ", Сумма: " + max);
         return max;
     }
-
+    // удалим расходы, превышающие 300 евро.
     public void removeExpensesAbove(double limit) {
         for (int i = 0; i < amounts.size(); i++) {
             if (amounts.get(i) > limit) {
@@ -85,4 +86,5 @@ public class ExpenseTracker {
         int count = tracker.countExpensesBelow(300);
         System.out.println("Количество месяцев с расходами ниже 300 евро: " + count);
     }
+
 } // klass ende

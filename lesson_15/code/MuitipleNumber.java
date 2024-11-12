@@ -19,4 +19,4 @@ public class MuitipleNumber {
             System.out.println("there are no double-digit multiples of 17.");
         }
     }
-}
+} // klass ended

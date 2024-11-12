@@ -1,8 +1,8 @@
 public class MathOperations {
-  // aufgabe//
-    //x,y//
-   //prozess//
-   //ziel//
+     // задание
+     // x,y производные
+     // решение
+     // цель
     public static void main(String[] args) {
 
 int x=38;

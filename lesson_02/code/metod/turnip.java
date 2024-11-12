@@ -4,7 +4,6 @@ public class turnip {
 
     public static void main(String[] args) {
 
-
         planted();
         ententainer();
         pullOut();
@@ -24,6 +23,7 @@ public static void ententainer(){
         mouse();
 
 }
+
 public static void turnip(){
     System.out.println("the turnip has grow");
 }
@@ -33,13 +33,14 @@ public static void grandfater(){
 public static void grandmother(){
         System.out.println("grandmother pulls and calls grandchildren");
     }
-    public static void grandchildren(){
+public static void grandchildren(){
         System.out.println("grandchildren pulls and call pets");
     }
-    public static void pets(){
+public static void pets(){
         System.out.println("pets pulls and call mouse");
     }
-    public static void mouse(){
+public static void mouse(){
         System.out.println("mouse pulls");
     }
-}
+
+} // klass ended

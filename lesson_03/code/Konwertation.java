@@ -1,6 +1,6 @@
 public class Konwertation {
     public static void main(String[] args) {
-
+      // конвертер валют
         double money = 100;// pound
         double pound = exchangelPoundsToEuro(money);
         System.out.println("Euro=:" + pound);//pr ende
