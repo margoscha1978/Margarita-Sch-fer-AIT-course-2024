@@ -19,18 +19,18 @@ public class WordAndLetterCount {
                 " – в наивные времена масонских лож, мартинистов, тугендбунда, во времена Милорадовичей, Давыдовых, Пушкиных," +
                 " – в губернском городе К. был съезд помещиков, и кончались дворянские выборы.";
 
-        //schitaem slova
+        // считаем слова
         String[] words = text.split("\\s+");
         int wourdCount = words.length;
 
-        //schitaem bukvi
+        // считаем буквы
         int letterCount = 0;
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
                 letterCount++;
             }
         }
-        //resultat
+        // результат
         System.out.println("Words: " + wourdCount);
         System.out.println("Letters: " + letterCount);
         System.out.println();

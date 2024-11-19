@@ -5,14 +5,14 @@ package homework17;
 
 public class PrintNumbers {
     public static void main(String[] args) {
-        int count = 0;//schetchik
-        int number = 1;//chislo
+        int count = 0;// счетчик чисел
+        int number = 1;// число
         do {
             if (number % 5 == 0) {
-                System.out.println(number);// chislo
-                count++;// ubelichili schetchik
+                System.out.println(number);// число
+                count++;// увеличиваем сам счетчик на 1 шаг
             }
-            number++;//pereschli k sledujuschemu chislu
+            number++;// перенос к следующему числу
         } while (count < 7 && number <= 100);
     }
 

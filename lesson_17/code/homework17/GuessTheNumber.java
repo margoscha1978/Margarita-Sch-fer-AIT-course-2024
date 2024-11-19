@@ -33,7 +33,7 @@ public class GuessTheNumber {
         boolean playAgain;
 
         do {
-            //chislo generiruem
+            // генератор чисел рандом
             int randomNumber = (int) (Math.random() * 100) + 1;
             int attempts = 0;
             int guess;
@@ -50,15 +50,15 @@ public class GuessTheNumber {
                         if (guess < 1 || guess > 100) {
                             System.out.println(" Number from 1 to 100,try again ...");
                         } else {
-                            break;//vveli verno,vixodim iz zikla
+                            break; // если ввели верное число выходим из цикла
                         }
                     } catch ( NumberFormatException e) {
                         System.out.println(" Pleas enter a number from 1 to 100 ...");
                     }
                 }
-                //schtaem popitki
+                // считаем попытки
                 attempts++ ;
-                // sravnivaem chisla
+                // сравниваем введенные числа
                 if (guess < randomNumber){
                 if (randomNumber - guess > 20) {
 
@@ -77,7 +77,7 @@ public class GuessTheNumber {
                 }
             } else {
 
-                correctGuess = true;// ugadal
+                correctGuess = true;// угадал число
             }
                 if (attempts >= maxAttempts){
                     System.out.println("Sorry,you've exhausted all attempts.The given number was: " + randomNumber  + ".");
@@ -86,7 +86,7 @@ public class GuessTheNumber {
         if (correctGuess) {
             System.out.println("Congratulations,you guessed the number!" + randomNumber + " in " + attempts + " attempts...");
         }
-        // spraschivaem polzovatelja
+        // спрашиваем пользователя и его цели игры, продолжает или нет
         System.out.println(" Do you want to play more? (yes/no): ");
         String response = scanner.nextLine();
         playAgain = response.equalsIgnoreCase("yes");

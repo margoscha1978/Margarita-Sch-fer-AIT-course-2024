@@ -6,7 +6,7 @@ public class QuadraticEquationSolver {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in );
 
-        // koeffitient zapros
+        // запрашиваем коэффициенты
         System.out.println("Enter coefficient a: ");
         double a = scanner.nextDouble();
         System.out.println("Enter coefficient b: ");
@@ -14,10 +14,10 @@ public class QuadraticEquationSolver {
         System.out.println("Enter coefficient c: ");
         double c = scanner.nextDouble();
 
-        //diskriminant
+        // дискриминант
         double d = b * b - 4 * a * c;
 
-        //proverka
+        // проверяем
         if (d > 0) {
             double x1 = (-b + Math.sqrt(d) / 2 * a);
             double x2 = (-b + Math.sqrt(d) / 2 * a);

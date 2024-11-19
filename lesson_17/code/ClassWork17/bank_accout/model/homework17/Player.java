@@ -48,7 +48,7 @@ class Player {
         if (amount > balance) {
             System.out.println("Недостаточно средств для размещения ставки.");
         } else {
-            balance -= amount;
+            balance -= amount; // balance = balance - amount это то же возможная версия
             System.out.println("Ставка сделана: " + amount);
         }
     }
@@ -68,7 +68,7 @@ class Player {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Player player = (Player) obj;
-        return id.equals(player.id);
+        return id.equals(player.id); // return Objekts.eqalis(id, player id) возможная версия
     }
 
     @Override

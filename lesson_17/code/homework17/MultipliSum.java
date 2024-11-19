@@ -12,9 +12,9 @@ public class MultipliSum {
         int n = scanner.nextInt();
         System.out.println("Enter a natural number n");
         int i = 0;
-        int sumOfProdukt = 0;//summa proizvedenii
+        int sumOfProdukt = 0;// сумма наших произведений
 
-        // umnoschaemn na vse chisla ot 0 do n i schitaem summu
+        // умножаем на все возможные числа от 0 do n и считаем сумму
         System.out.println("Multiplication Results:");
         while (i <= n){
             int produkt = n * i;
@@ -22,7 +22,7 @@ public class MultipliSum {
             sumOfProdukt += produkt;
             i++;
         }
-       //summa proizvwdwnii
+       // получаем сумму произведений
         System.out.println("Sum of all products = " + sumOfProdukt);
     }
 }

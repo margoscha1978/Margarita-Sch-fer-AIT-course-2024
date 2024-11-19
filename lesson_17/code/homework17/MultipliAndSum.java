@@ -12,20 +12,20 @@ public class MultipliAndSum {
         System.out.println("Enter a natural number n: ");
         int n = scanner.nextInt();
         int i = 0;
-        //umnoschaem
+        // умножаем
         System.out.println("Result of multiplication");
         while (i <= n) {
-            int produkt = n * i;//proizvwdenie
+            int produkt = n * i;// наше произведение
             System.out.println(n + " * " + i + " = " + produkt);
             i++;
         }
-            // cbrosim i,nam nuschna summa
+            // сброс i, теперь мы находим сумму
             i = 0;
             int sum = 0;
-            //summa chisel ot 0 do n
+            // сумма чисел oт 0 do n
             while (i <= n){
-                sum += i;// dobavljaem i k summe
-                i++;//uvelichivaem i na 1
+                sum += i;// прибавляем i к сумме
+                i++;//увеличиваем i на 1
             }
             System.out.println("Sum of all natural numbers from 0 to " + n + " = " + sum);
         }

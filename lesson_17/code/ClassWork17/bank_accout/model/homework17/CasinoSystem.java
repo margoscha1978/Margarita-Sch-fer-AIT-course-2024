@@ -21,13 +21,13 @@ class CasinoSystem {
         players = new HashSet<>();
         games = new HashSet<>();
     }
-
+    // проверка наличия или отсутствия игроков по id
     public void addPlayer(Player player) {
         if (!players.add(player)) {
             System.out.println("Игрок с таким id уже существует.");
         }
     }
-
+    // наличие игры в списке игр
     public void addGame(Game game) {
         if (!games.add(game)) {
             System.out.println("Игра с таким названием уже существует.");
@@ -50,7 +50,7 @@ class CasinoSystem {
             }
         }
     }
-
+    // начисление игровых процентов и подтверждение игры или игрока по id
     public void awardWin(String playerId, String gameName, double amount) {
         Player player = findPlayerById(playerId);
         Game game = findGameByName(gameName);
@@ -68,7 +68,7 @@ class CasinoSystem {
             }
         }
     }
-
+    // ищем игрока по номеру id
     private Player findPlayerById(String playerId) {
         for (Player player : players) {
             if (player.getId().equals(playerId)) {
@@ -77,7 +77,7 @@ class CasinoSystem {
         }
         return null;
     }
-
+    // поиск игры в наличии
     private Game findGameByName(String gameName) {
         for (Game game : games) {
             if (game.getName().equals(gameName)) {
@@ -86,13 +86,13 @@ class CasinoSystem {
         }
         return null;
     }
-
+    // список игроков
     public void displayPlayers() {
         for (Player player : players) {
             System.out.println(player);
         }
     }
-
+    // список игр
     public void displayGames() {
         for (Game game : games) {
             System.out.println(game);

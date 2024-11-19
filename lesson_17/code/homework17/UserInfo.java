@@ -13,12 +13,12 @@ public class UserInfo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // dannie peremennich
+        // данные переменных
         String name, surname, citi;
          int age = 0;
         double height = 0;
 
-//chitaem dannie
+       // считываем данные ввода
         System.out.println("Your name: ");
         name = scanner.nextLine();
 
@@ -36,7 +36,7 @@ public class UserInfo {
         height = scanner.nextDouble();
         scanner.nextLine();
 
-        //resultat
+        // результат распечатываем
         System.out.println("Yuor informacion: ");
         System.out.println("Name: " + name);
         System.out.println("Surname: " + surname);

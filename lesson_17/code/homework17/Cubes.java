@@ -12,11 +12,11 @@ public class Cubes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number n:");
-        int n = scanner.nextInt();//chitaem chislo vvoda
-        int i = 1;//peremennaja
+        int n = scanner.nextInt();// считываем число с ввода
+        int i = 1;// вводим переменную
 
-        while (i <= n){//rabotaet poka i <0 n
-        int cube = i * i * i;//formula cuba
+        while (i <= n){ // работает и верно пока i < 0
+        int cube = i * i * i;// формула куба
             System.out.println("Number cubed " + i + " = " + cube);
             i++;
         }

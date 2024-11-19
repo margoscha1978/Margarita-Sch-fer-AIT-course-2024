@@ -13,12 +13,12 @@ public class LeapYearCheker {
         System.out.println("Enter year: ");
         int year = scanner.nextInt();
 
-        //proverka na visokosnii god
+        // високосный год, проверяем
         boolean isLeapYear = false;
         if ((year % 4 == 0 &&  year % 100 != 0) || (year % 400 == 0)){
                  isLeapYear = true ;
         }
-        //resultat
+        // результат проверки
         if (isLeapYear){
             System.out.println(year + " Leap year");
         } else {

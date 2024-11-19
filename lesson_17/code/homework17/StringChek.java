@@ -19,11 +19,11 @@ public class StringChek {
         int attempts = 0;
         do{
             System.out.println(" Enter string " + correctString);
-            userInput = scanner.nextLine();//schitaem vvod
+            userInput = scanner.nextLine();// считываем ввод
             attempts++;
             System.out.println(" Error! piease try again ");
         }
-        while (!userInput.equals(correctString ) );//povtorjaem popitku
+        while (!userInput.equals(correctString ) ); // повторение попытки
         System.out.println(" Right! Well done,did a great job ! ");
         System.out.println(" Number of attempts : " + attempts );
 

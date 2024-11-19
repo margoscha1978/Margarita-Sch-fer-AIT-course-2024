@@ -13,13 +13,13 @@ public class kuh {
         System.out.println("Enter a positive number n (from 1 to 10): ");
         int n = scanner.nextInt();
 
-        //proverka chisla
+        // проверка числа
         if (n<1 || n>10){
             System.out.println("The number must be from 1 to 10");
             return;
         }
         String wordForm;
-        // forma slova
+        // форма слов
         if(n == 1){
             wordForm = "Cow";
         }else if (n >= 2 && n <= 4){
@@ -27,8 +27,8 @@ public class kuh {
         } else {
             wordForm = "Lots of cows";
         }
-        //resultat poiska
+        // результат поиска
             System.out.println("Grasing in the meadow... " + n + " " + wordForm + ".");
 
     }
-}//klass ende
+}//klass ended
