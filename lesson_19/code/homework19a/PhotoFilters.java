@@ -41,7 +41,7 @@ public class PhotoFilters {
 
         while (!(filter = scanner.nextLine()).equalsIgnoreCase("exit")) {
             addFilter(filter);
-            System.out.println("Введите название фильтра (или exit для выхода): ");
+            System.out.println("Введите название фильтра (или     exit для выхода): ");
         }
 
     }
