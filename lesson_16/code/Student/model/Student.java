@@ -64,4 +64,5 @@ private String specialization;
     public void vacation(){
         System.out.println("The student went on vacation...");
     }
+
 }// klass ende
