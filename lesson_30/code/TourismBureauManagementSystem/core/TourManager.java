@@ -16,7 +16,7 @@ import TourismBureauManagementSystem.model.Tour;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TourManager {
+public class  TourManager {
     private List<Tour> tours;
 
     public TourManager() {
@@ -24,11 +24,25 @@ public class TourManager {
     }
 
     public void addTour(Tour tour) {
-        tours.add(tour);
+        // Проверка на null значение даты
+        if (tour.getDate() == null) {
+            System.out.println("Ошибка: Дата тура не может быть null.");
+            return; // Или возможно, бросить исключение
+        }
+
+        // Проверка на дубликат ID
+        for (Tour existingTour : tours) {
+            if (existingTour.getId().equals(tour.getId())) {
+                System.out.println("Ошибка: Тур с таким ID уже существует.");
+                return; // Или бросить исключение
+            }
+        }
+
+        tours.add(tour); // Добавление тура
         System.out.println("Тур добавлен: " + tour);
     }
 
-    public boolean removeTour(String tourId) {
+    public boolean removeTour(String tourId) { // удаление тура по идентификатору
         Tour tour = findTourById(tourId);
         if (tour != null) {
             tours.remove(tour);
@@ -40,7 +54,7 @@ public class TourManager {
         }
     }
 
-    public Tour findTourById(String id) {
+    public Tour findTourById(String id) { // получение тура по идентификатору
         for (Tour tour : tours) {
             if (tour.getId().equals(id)) {
                 return tour;

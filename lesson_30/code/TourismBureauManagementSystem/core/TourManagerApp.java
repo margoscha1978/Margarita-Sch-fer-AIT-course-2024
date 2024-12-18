@@ -32,4 +32,5 @@ public class TourManagerApp {
         // Получение всех туров
         System.out.println("Все туры: " + tourManager.getAllTours());
     }
+
 } // klass ended

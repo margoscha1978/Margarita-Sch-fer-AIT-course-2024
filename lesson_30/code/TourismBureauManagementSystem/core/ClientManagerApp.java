@@ -22,6 +22,7 @@ public class ClientManagerApp {
       clientManager.addClient(client3);
       clientManager.addClient(client4);
       clientManager.addClient(client5);
+      clientManager.addClient(client6);
 
       // Поиск и вывод клиента по id
       Client foundClient = clientManager.findClientById("1");

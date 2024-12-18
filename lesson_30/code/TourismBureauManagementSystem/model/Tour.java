@@ -1,6 +1,7 @@
 package TourismBureauManagementSystem.model;
 
 
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -114,13 +115,8 @@ public class Tour {
                 ", availableSeats=" + availableSeats +
                 '}';
     }
-}
 
-
-
-
-
-
+} // klass ended
 
 /*
  Создать класс Tour c уникальными полями:
