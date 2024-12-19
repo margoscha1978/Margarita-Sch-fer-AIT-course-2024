@@ -67,11 +67,13 @@ public class TourTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        Tour anotherTour = new Tour("1", "Экскурсия", LocalDate.now().plusDays(10), 5, 1000.0, 5);
+        Tour anotherTour = new Tour("1", "Экскурсия", LocalDate.now().plusDays(10), 5,
+                1000.0, 5);
         assertEquals(tour, anotherTour);
         assertEquals(tour.hashCode(), anotherTour.hashCode());
 
-        Tour differentTour = new Tour("2", "Другой тур", LocalDate.now().plusDays(10), 5, 1000.0, 5);
+        Tour differentTour = new Tour("2", "Другой тур", LocalDate.now().plusDays(10), 5,
+                1000.0, 5);
         assertNotEquals(tour, differentTour);
     }
 
