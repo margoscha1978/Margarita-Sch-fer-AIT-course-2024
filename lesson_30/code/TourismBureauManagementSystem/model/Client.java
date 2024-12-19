@@ -20,7 +20,7 @@ public class Client {
     private String lastName; // Фамилия клиента
     private String contactInfo; // Контактная информация клиента
 
-    private static List<Client> clientsList = new ArrayList<>(); // Статический список клиентов
+    private static final List<Client> clientsList = new ArrayList<>(); // Статический список клиентов
 
     // Конструктор
     public Client(String id, String firstName, String lastName, String contactInfo) {
