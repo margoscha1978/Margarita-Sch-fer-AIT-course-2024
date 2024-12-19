@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Client {
-    private String id; // Уникальный идентификатор клиента
-    private String firstName; // Имя клиента
-    private String lastName; // Фамилия клиента
+    private final String id; // Уникальный идентификатор клиента
+    private final String firstName; // Имя клиента
+    private final String lastName; // Фамилия клиента
     private String contactInfo; // Контактная информация клиента
 
     private static final List<Client> clientsList = new ArrayList<>(); // Статический список клиентов
