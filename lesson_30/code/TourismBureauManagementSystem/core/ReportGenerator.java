@@ -52,15 +52,16 @@ public class ReportGenerator {
 
     // Генерация отчета о текущей очереди
     public String generateQueueReport() {
-        List<QueueItem> queueItems = queueManager.getQueueItems(); // Изменено на QueueItem
+        List queueItems = queueManager.getQueueItems(); // Изменено на QueueItem
         StringBuilder report = new StringBuilder("Текущая очередь:\n");
 
-        for (QueueItem item : queueItems) {
+        for (Object item : queueItems) {
             report.append(item.toString()).append("\n");
         }
         log.info("Сгенерирован отчет по очереди.");
         return report.toString();
     }
+
 } // klass ended
 
 /*
