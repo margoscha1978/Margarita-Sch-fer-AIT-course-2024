@@ -7,7 +7,6 @@ package TourismBureauManagementSystem.core;
      */
 
 import TourismBureauManagementSystem.model.Client;
-import TourismBureauManagementSystem.model.QueueItem;
 import TourismBureauManagementSystem.model.Tour;
 
 import java.util.List;
