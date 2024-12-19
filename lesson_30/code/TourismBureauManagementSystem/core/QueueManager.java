@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class QueueManager<T> {
-    private Queue<T> queue; // Обобщенная очередь
+    private final Queue<T> queue; // Обобщенная очередь
 
     // Конструктор
     public QueueManager() {
