@@ -96,7 +96,8 @@ public class Client {
 
     @Override
     public String toString() {
-        return String.format("Client{id='%s', firstName='%s', lastName='%s', contactInfo='%s'}", id, firstName, lastName, contactInfo);
+        return String.format("Client{id='%s', firstName='%s', lastName='%s', contactInfo='%s'}", id, firstName,
+                lastName, contactInfo);
     }
 
     @Override
