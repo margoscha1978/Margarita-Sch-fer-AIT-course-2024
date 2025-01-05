@@ -6,23 +6,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Tour {
     private static final Logger log = LoggerFactory.getLogger(Tour.class);
 
-    private String id; // Уникальный идентификатор
+    private String id; // ID тура
     private String destination; // Направление
-    private LocalDate date; // Дата начала
-    private int duration; // Продолжительность
-    private double price; // Стоимость
-    private int availableSeats; // Количество доступных мест
+    private LocalDate lokaleDaten; // Местные данные (например, дата начала тура)
+    private int duration; // Продолжительность тура (в днях)
+    private double price; // Цена
+    private int availableSeats; // Количество свободных мест
 
-    // Конструктор класса Tour
-    public Tour(String id, String destination, LocalDate date, int duration, double price, int availableSeats) {
+    public Tour(String id, String destination, LocalDate lokaleDaten, int duration, double price, int availableSeats) {
         this.id = id;
         this.destination = destination;
-        this.date = date;
+        this.lokaleDaten = lokaleDaten;
         this.duration = duration;
         this.price = price;
         this.availableSeats = availableSeats;
@@ -36,11 +36,11 @@ public class Tour {
         return destination;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getLokaleDaten() {
+        return lokaleDaten;
     }
 
-    public double getDuration() {
+    public int getDuration() {
         return duration;
     }
 
@@ -88,32 +88,28 @@ public class Tour {
     }
 
     @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Tour{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", destination='").append(destination).append('\'');
+        sb.append(", lokaleDaten=").append(lokaleDaten);
+        sb.append(", duration=").append(duration);
+        sb.append(", price=").append(price);
+        sb.append(", availableSeats=").append(availableSeats);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Tour tour)) return false;
-        return Double.compare(tour.price, price) == 0 &&
-                Double.compare(tour.duration, duration) == 0 &&
-                availableSeats == tour.availableSeats &&
-                id.equals(tour.id) &&
-                destination.equals(tour.destination) &&
-                date.equals(tour.date);
+        if (o == null || getClass() != o.getClass()) return false;
+        Tour tour = (Tour) o;
+        return duration == tour.duration && Double.compare(price, tour.price) == 0 && availableSeats == tour.availableSeats && Objects.equals(id, tour.id) && Objects.equals(destination, tour.destination) && Objects.equals(lokaleDaten, tour.lokaleDaten);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, destination, date, duration, price, availableSeats);
-    }
-
-    @Override
-    public String toString() {
-        return "Tour{" +
-                "id='" + id + '\'' +
-                ", destination='" + destination + '\'' +
-                ", date=" + date +
-                ", duration=" + duration +
-                ", price=" + price +
-                ", availableSeats=" + availableSeats +
-                '}';
+        return Objects.hash(id, destination, lokaleDaten, duration, price, availableSeats);
     }
 
 } // klass ended

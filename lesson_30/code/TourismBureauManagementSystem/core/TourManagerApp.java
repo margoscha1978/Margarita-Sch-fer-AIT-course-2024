@@ -10,15 +10,15 @@ public class TourManagerApp {
 
         // Создание туров
         Tour tour1 = new Tour("1", "Китай", LocalDate.parse("2024-10-12"), 10,
-                4500, 5);
+                4500.0, 5);
         Tour tour2 = new Tour("2", "Италия", LocalDate.parse("2024-12-25"), 15,
-                2300, 5);
+                2300.0, 5);
         Tour tour3 = new Tour("3", "Испания", LocalDate.parse("2024-10-12"), 5,
-                3700, 10);
+                3700.0, 10);
         Tour tour4 = new Tour("4", "Сербия", LocalDate.parse("2024-12-25"), 10,
-                3300, 5);
+                3300.0, 5);
         Tour tour5 = new Tour("5", "Греция", LocalDate.parse("2024-10-12"), 5,
-                2500, 5);
+                2500.0, 5);
 
         // Добавление туров
         tourManager.addTour(tour1);

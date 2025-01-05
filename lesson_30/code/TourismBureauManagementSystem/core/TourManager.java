@@ -13,7 +13,10 @@ package TourismBureauManagementSystem.core;
  */
 
 import TourismBureauManagementSystem.model.Tour;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class  TourManager {
@@ -25,16 +28,14 @@ public class  TourManager {
 
     public void addTour(Tour tour) {
         // Проверка на null значение даты
-        if (tour.getDate() == null) {
-            System.out.println("Ошибка: Дата тура не может быть null.");
-            return; // Или возможно, бросить исключение
+        if (tour == null) {
+            throw new IllegalArgumentException("Тур не может быть null.");
         }
 
         // Проверка на дубликат ID
         for (Tour existingTour : tours) {
             if (existingTour.getId().equals(tour.getId())) {
-                System.out.println("Ошибка: Тур с таким ID уже существует.");
-                return; // Или бросить исключение
+                throw new IllegalArgumentException("Тур с таким ID уже существует: " + tour.getId());
             }
         }
 
@@ -64,7 +65,7 @@ public class  TourManager {
     }
 
     public List<Tour> getAllTours() {
-        return new ArrayList<>(tours); // Возвращаем копию списка туров
+        return Collections.unmodifiableList(new ArrayList<>(tours)); // Возвращаем копию списка туров
     }
 
 } // klass ended

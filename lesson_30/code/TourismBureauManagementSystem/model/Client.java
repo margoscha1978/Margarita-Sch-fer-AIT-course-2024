@@ -10,29 +10,23 @@ package TourismBureauManagementSystem.model;
 - Пример использования: В main методе показан пример регистрации клиентов, их поиска, обновления данных и удаления.
  */
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Client {
-    private final String id; // Уникальный идентификатор клиента
-    private final String firstName; // Имя клиента
-    private final String lastName; // Фамилия клиента
-    private String contactInfo; // Контактная информация клиента
+    private static int idCounter = 0; // Счетчик для генерации уникальных ID
+    private int id; // Уникальный идентификатор клиента
+    private String firstName; // Имя клиента
+    private String lastName; // Фамилия клиента
+    private String contactInfo; // Контактная информация (например, email)
 
-    private static final List<Client> clientsList = new ArrayList<>(); // Статический список клиентов
-
-    // Конструктор
-    public Client(String id, String firstName, String lastName, String contactInfo) {
-        this.id = id;
+    public Client(String firstName, String lastName, String contactInfo) {
+        this.id = ++idCounter; // Генерируем новый ID
         this.firstName = firstName;
-        this.lastName = lastName; // Инициализируем фамилию
-        this.contactInfo = contactInfo; // Инициализируем контактную информацию
-        clientsList.add(this); // Добавляем клиента в статический список
+        this.lastName = lastName;
+        this.contactInfo = contactInfo;
     }
 
-    // Геттеры
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -48,74 +42,25 @@ public class Client {
         return contactInfo;
     }
 
-    public static List<Client> getClientsList() {
-        return clientsList;
-    }
-
-    // Метод для регистрации нового клиента
-    public static void registerClient(String id, String firstName, String lastName, String contactInfo) {
-        if (findClientById(id) != null) {
-            throw new IllegalArgumentException("Клиент с ID " + id + " уже зарегистрирован.");
-        }
-        new Client(id, firstName, lastName, contactInfo); // Создаем нового клиента с полными данными
-    }
-
-    // Метод для поиска клиента по ID
-    public static Client findClientById(String id) {
-        return clientsList.stream()
-                .filter(client -> client.getId().equals(id))
-                .findFirst()
-                .orElse(null);
-    }
-
-    // Метод для поиска клиентов по имени
-    public static List<Client> findClientsByName(String name) {
-        List<Client> foundClients = new ArrayList<>();
-        for (Client client : clientsList) {
-            if (client.getFirstName().equalsIgnoreCase(name) || client.getLastName().equalsIgnoreCase(name)) {
-                foundClients.add(client);
-            }
-        }
-        return foundClients;
-    }
-
-    // Метод для удаления клиента по ID
-    public static boolean removeClientById(String id) {
-        Client client = findClientById(id);
-        if (client != null) {
-            clientsList.remove(client);
-            return true; // Успешное удаление
-        }
-        return false; // Клиент не найден
-    }
-
     // Метод для обновления контактной информации
-    public void updateContactInfo(String newContactInfo) {
+    public void setContactInfo(String newContactInfo) {
         this.contactInfo = newContactInfo;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Client{id='%s', firstName='%s', lastName='%s', contactInfo='%s'}", id, firstName,
-                lastName, contactInfo);
-    }
-
+    // Переопределяем equals и hashCode для правильного сравнения клиентов
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Client client)) return false;
-        return Objects.equals(id, client.id) &&
-                Objects.equals(firstName, client.firstName) &&
-                Objects.equals(lastName, client.lastName) &&
-                Objects.equals(contactInfo, client.contactInfo);
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return Objects.equals(contactInfo, client.contactInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, contactInfo);
+        return Objects.hash(contactInfo);
     }
-
-} // klass ended
+}
 
 
 
