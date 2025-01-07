@@ -83,6 +83,37 @@ class DepartmentTest {
         assertTrue(employees.contains(emp1));
         assertTrue(employees.contains(emp2));
     }
+
+    @Test
+    void testAddEmployeeSuccesfull() {
+        Employee employee = new Employee("1","Doe","Junior developer", 35000);
+        Employee employee2 = new Employee("2","John","Senior developer", 50000);
+        Employee employee3 = new Employee("3","Tom","Junior developer", 25000);
+        department.addEmployee(employee);
+        department.addEmployee(employee2);
+        department.addEmployee(employee3);
+        ArrayList<Employee> employeesResult = department.getEmployees();
+        assertEquals(3, employeesResult.size());
+        assertEquals(employee, employeesResult.get(0));
+        assertEquals(employee2, employeesResult.get(1));
+        assertEquals(employee3, employeesResult.get(2));
+    }
+
+    @Test
+    void testAddNullEmployee() {
+        Employee employee = null;
+        department.addEmployee(employee);
+        ArrayList<Employee> employeesResult = department.getEmployees();
+        assertEquals(0, employeesResult.size());
+    }
+
+    @Test
+    void testAddEmptyEmployee() {
+        Employee employee = new Employee(null,"Doe","Junior developer", 35000);
+        department.addEmployee(employee);
+        ArrayList<Employee> employeesResult = department.getEmployees();
+        assertEquals(0, employeesResult.size());
+    }
 } // test ended
 /*
  Объяснение тестов

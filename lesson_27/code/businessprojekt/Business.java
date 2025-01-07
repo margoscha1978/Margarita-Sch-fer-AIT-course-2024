@@ -19,14 +19,15 @@ import java.util.Objects;
 
 public class Business {
     private String name;
-    private HashMap<String, Department> departments = new HashMap<>();
+    private HashMap<String,  Department> departments = new HashMap<>();
 
     public Business(String name) {
         this.name = name;
     }
 
-    public void addDepartment(Department department) {
-        if (department == null) {
+    public  void addDepartment(Department department)
+    {
+        if(department == null){
             System.out.println("Department is null");
         }
         else {
@@ -50,8 +51,8 @@ public class Business {
         }
     }
 
-    public Department getDepartment(String departmentName){
-        if(departmentName == null || departmentName.isEmpty()){
+    public Department getDepartment(String departmentName) {
+        if (departmentName == null || departmentName.isEmpty()) {
             System.out.println("Department name is null or empty");
         }
         else {
