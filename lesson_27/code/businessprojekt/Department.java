@@ -2,6 +2,8 @@ package businessprojekt;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
+
 /*
  Поля:
 - String name — название отдела.
@@ -17,11 +19,10 @@ import java.util.ArrayList;
  */
 public class Department {
     private String name;
-    private ArrayList<Employee> employees;
+    private ArrayList<Employee> employees = new ArrayList<>();
 
     public Department(String name) {
         this.name = name;
-        this.employees = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,34 +30,88 @@ public class Department {
     }
 
     public void addEmployee(Employee employee) {
-        employees.add(employee);
+       // employees.add(employee);
+        if(employee == null){
+            System.out.println("Employee is null");
+        }
+        else if(employee.getId() == null || employee.getName() == null
+                || employee.getPosition() == null || employee.getSalary() <= 0){
+            System.out.println("Employee is invalid");
+        }
+        else {
+            employees.add(employee);
+            System.out.println("Employee ID" + employee.getId() + " added");
+        }
     }
 
     public void removeEmployee(String employeeId) {
-        employees.removeIf(e -> e.getId().equals(employeeId));
+       // employees.removeIf(e -> e.getId().equals(employeeId));
+        boolean found = false;
+        if(employeeId == null || employeeId.isEmpty()){
+            System.out.println("Employee ID is null or empty");
+        }
+        else {
+            for (Employee employee : employees) {
+                if(employee.getId().equals(employeeId)){
+                    employees.remove(employee);
+                    System.out.println("Employee ID" + employeeId + " removed");
+                    found = true;
+                    break;
+                }
+
+            }
+            if(!found) {
+                System.out.println("Employee ID" + employeeId + " not found");
+            }
+
+        }
     }
 
     public Employee findEmployee(String employeeId) {
+        if(employeeId == null || employeeId.isEmpty()){
+            System.out.println("Employee ID is null or empty");
+        }
+        else {
         for (Employee employee : employees) {
             if (employee.getId().equals(employeeId)) {
                 return employee;
             }
         }
+            System.out.println("Employee ID" + employeeId + " not found");
+        }
         return null;
     }
 
     public double getTotalSalary() {
-        double total = 0;
-        for (Employee employee : employees) {
-            total += employee.getSalary();
+        double totalSalary = 0;
+        if(employees.isEmpty()){
+            System.out.println("No employees found");
+            return totalSalary;
         }
-        return total;
+
+        for(Employee employee : employees){
+            totalSalary = totalSalary + employee.getSalary();
+              //double total = 0;
+              //for (Employee employee : employees) {
+              //total += employee.getSalary();
+        }
+        return totalSalary;
     }
 
     public ArrayList<Employee> getEmployees() {
-        return employees;
+        return new ArrayList<>(employees);
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return Objects.equals(name, that.name);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
 
 } // klass ended
 

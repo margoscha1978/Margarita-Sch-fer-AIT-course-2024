@@ -1,4 +1,5 @@
 package businessprojekt;
+import java.util.Objects;
 
 /*
 Поля:
@@ -36,5 +37,16 @@ public class Employee {
 
     public String getInfo() {
         return "ID: " + id + ", Name: " + name + ", Position: " + position + ", Salary: " + salary;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(id, employee.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 } // klass ended

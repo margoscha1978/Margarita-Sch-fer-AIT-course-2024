@@ -2,6 +2,7 @@ package businessprojekt;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 /*
  Поля:
 - String name — название компании.
@@ -18,41 +19,68 @@ import java.util.HashSet;
 
 public class Business {
     private String name;
-    private HashMap<String, Department> departments;
+    private HashMap<String, Department> departments = new HashMap<>();
 
     public Business(String name) {
         this.name = name;
-        this.departments = new HashMap<>();
     }
 
     public void addDepartment(Department department) {
-        departments.put(department.getName(), department);
+        if (department == null) {
+            System.out.println("Department is null");
+        }
+        else {
+            departments.put(department.getName(),department);
+            System.out.println("Department " + department.getName() + " added");
+        }
     }
 
-    public void removeDepartment(String departmentName) {
-        departments.remove(departmentName);
+    public void removeDepartment(String departmentName){
+        if(departmentName == null || departmentName.isEmpty()){
+            System.out.println("Department name is null or empty");
+        }
+        else {
+            if(departments.containsKey(departmentName)) {
+                departments.remove(departmentName);
+                System.out.println("Department " + departmentName + " removed");
+            }
+            else {
+                System.out.println("Department " + departmentName + " not found");
+            }
+        }
     }
 
-    public Department getDepartment(String departmentName) {
-        return departments.get(departmentName);
+    public Department getDepartment(String departmentName){
+        if(departmentName == null || departmentName.isEmpty()){
+            System.out.println("Department name is null or empty");
+        }
+        else {
+            if(departments.containsKey(departmentName)) {
+                return departments.get(departmentName);
+            }
+            else {
+                System.out.println("Department " + departmentName + " not found");
+            }
+        }
+        return null;
     }
 
-    public HashSet<String> getAllPositions() {
+    public HashSet<String> getAllPositions(){
         HashSet<String> positions = new HashSet<>();
-        for (Department department : departments.values()) {
-            for (Employee employee : department.getEmployees()) {
+        for(Department department : departments.values()){
+            for(Employee employee : department.getEmployees()){
                 positions.add(employee.getPosition());
             }
         }
         return positions;
     }
 
-    public double getTotalCompanySalary() {
-        double total = 0;
-        for (Department department : departments.values()) {
-            total += department.getTotalSalary();
+    public double getTotalCompanySalary(){
+        double totalSalaryBusiness = 0;
+        for(Department department : departments.values()){
+            totalSalaryBusiness = totalSalaryBusiness + department.getTotalSalary();
         }
-        return total;
+        return totalSalaryBusiness;
     }
 } // Klass ended
 
