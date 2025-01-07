@@ -5,7 +5,7 @@ import TourismBureauManagementSystem.model.Client;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleClientManager implements Manager<Client> {
+public class SimpleClientManager extends ClientManager implements Manager<Client> {
     private List<Client> clients;
 
     public SimpleClientManager() {
@@ -21,4 +21,4 @@ public class SimpleClientManager implements Manager<Client> {
     public List<Client> getAll() {
         return new ArrayList<>(clients); // Возвращаем копию списка
     }
-}
+} // klass ended

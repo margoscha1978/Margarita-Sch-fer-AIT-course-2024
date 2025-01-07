@@ -15,65 +15,12 @@ package TourismBureauManagementSystem.core;
    например, если клиент не был правильно добавлен и нужны исправления.
  */
 
+import TourismBureauManagementSystem.model.QueueItem;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-/*
-public class QueueManager<T> {
-    private final Queue<T> queue; // Обобщенная очередь
-
-    // Конструктор
-    public QueueManager() {
-        this.queue = new LinkedList<>(); // Инициализация очереди с использованием LinkedList
-    }
-
-    // Метод для добавления клиента в очередь
-    public void addClient(T client) {
-        if (client == null) {
-            throw new IllegalArgumentException("Клиент не может быть null");
-        }
-        queue.add(client);
-        System.out.println("Клиент добавлен в очередь: " + client);
-    }
-
-    // Метод для удаления клиента из начала очереди
-    public T removeClient() {
-        T removedClient = queue.poll(); // Извлекает и удаляет элемент из начала очереди
-        if (removedClient == null) {
-            System.out.println("Очередь пуста. Невозможно удалить клиента.");
-        } else {
-            System.out.println("Удален клиент из очереди: " + removedClient);
-        }
-        return removedClient; // Возвращает null, если очередь пуста
-    }
-
-    // Метод для проверки следующего клиента в очереди
-    public T peekNextClient() {
-        T nextClient = queue.peek(); // Возвращает, но не удаляет следующий элемент из очереди
-        if (nextClient == null) {
-            System.out.println("Очередь пуста. Нет следующего клиента.");
-        }
-        return nextClient; // Возвращает null, если очередь пуста
-    }
-
-    // Метод для проверки, пуста ли очередь
-    public boolean isQueueEmpty() {
-        return queue.isEmpty();
-    }
-
-    // Метод для получения текущего размера очереди
-    public int getQueueSize() {
-        return queue.size(); // Возвращает количество элементов в очереди
-    }
-
-    // Метод для получения копии списка клиентов в очереди
-    public List<T> getQueueItems() {
-        return new LinkedList<>(queue); // Возвращает копию очереди в виде списка
-    }
-
-} // klass ended
-
- */
 
 public class QueueManager<T> {
     private final Queue<T> queue; // Обобщенная очередь
@@ -115,6 +62,11 @@ public class QueueManager<T> {
     // Метод для проверки, пуста ли очередь
     public boolean isQueueEmpty() {
         return queue.isEmpty();
+    }
+
+    // Метод для получения текущей очереди
+    public List<T> getCurrentQueue() {
+        return new ArrayList<>(queue); // Возвращаем копию текущей очереди
     }
 
     // Метод для получения текущего размера очереди

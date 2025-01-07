@@ -4,133 +4,79 @@ import TourismBureauManagementSystem.model.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 import java.util.Optional;
-/*
-1. **`testAddClient()`:**
-        - Проверяет правильность добавления нового клиента и увеличение общей численности клиентов.
 
-        2. **`testAddDuplicateClient()`:**
-        - Проверяет, что при добавлении дубликата выбрасывается `IllegalArgumentException`.
-
-        3. **`testRemoveClient()`:**
-        - Проверяет удаление клиента по ID и уменьшение общего количества клиентов.
-
-        4. **`testRemoveNonExistingClient()`:**
-        - Проверяет удаление несуществующего клиента, что должно вернуть `false`.
-
-        5. **`testGetClientById()`:**
-        - Проверяет возможность получения клиента по ID и подтверждает правильность полученных данных.
-
-6. **`testGetNonExistingClientById()`:**
-        - Проверяет попытку получения несуществующего клиента, возвращая `Optional.empty()`.
-
-        7. **`testGetAllClients()`:**
-        - Проверяет получение всех зарегистрированных клиентов и их количество.
-
-        8. **`testFindClientById()`:**
-        - Проверяет, что клиент найден по ID.
-
-9. **`testFindClientsByName()`:**
-        - Проверяет поиск клиента по имени, ожидая, что будет найден правильный клиент.
-
-10. **`testUpdateContactInfo()`:**
-        - Проверяет обновление контактной информации клиента и ее правильность после обновления.
-
-        11. **`testUpdateContactInfo_NonExistingClient()`:**
-        - Проверяет, что обновление контактной информации для несуществующего клиента возвращает `false`.
-*/
-
+import static org.junit.jupiter.api.Assertions.*;
 class ClientManagerTest {
-    private ClientManager clientManager;
-
+private ClientManager clientManager;
     @BeforeEach
     void setUp() {
-        clientManager = new ClientManager();
-        clientManager.registerClient("Ivan", "Ivanov", "ivan@example.com");
-        clientManager.registerClient("Petr", "Petrov", "petr@example.com");
-        clientManager.registerClient("Anna", "Sidorova", "anna@example.com");
     }
 
     @Test
-    void testRegisterClient() {
-            Client newClient = new Client("Mikhail", "Mikhailov", "mikhail@example.com");
-            clientManager.registerClient("Ivan","Ivanov","ivan@example.co");
-            assertEquals(4, clientManager.getAllClients().size());
-    }
+    void registerClient() {
+        Client client = clientManager.registerClient("John", "Doe", "john@example.com");
 
-    @Test
-    void testRegisterDuplicateClient() {
-        // Убедитесь, что этот клиент уже зарегистрирован
-        clientManager.registerClient("Ivan", "Ivanov", "ivan@example.com");
-
-        Client duplicateClient = new Client("Ivan", "Ivanov", "ivan@example.com");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            clientManager.registerClient("Ivan", "Ivanov", "ivan@example.com");
-        });
-        assertEquals("Client with the same ID or contact info already exists.", exception.getMessage());
-    }
-
-    @Test
-    void testRemoveClient() {
-        assertTrue(clientManager.removeClient("1")); // Удаление клиента с ID 1
-        assertEquals(2, clientManager.getAllClients().size());
-        assertFalse(clientManager.getClient("1").isPresent());
-    }
-
-    @Test
-    void testRemoveNonExistingClient() {
-        assertFalse(clientManager.removeClient("99")); // Не существующий клиент
-    }
-
-    @Test
-    void testGetClientById() {
-        Client client = clientManager.getClient("1").orElse(null);
+        // Проверяем, что клиент не равен null и правильные данные
         assertNotNull(client);
-        assertEquals("Ivan", client.getFirstName());
+        assertEquals("John", client.getFirstName());
+        assertEquals("Doe", client.getLastName());
+        assertEquals("john@example.com", client.getContactInfo());
     }
 
     @Test
-    void testGetNonExistingClientById() {
-        assertFalse(clientManager.getClient("99").isPresent());
+    void findClientById() {
+        Client client = clientManager.registerClient("Alice", "Smith", "alice@example.com");
+        int clientId = client.getId(); // Получаем ID добавленного клиента
+
+        // Проверяем, можем ли мы найти клиента по ID
+        Optional<Client> foundClient = clientManager.findClientById(clientId);
+        assertTrue(foundClient.isPresent()); // Убедимся, что клиент был найден
+        assertEquals(client, foundClient.get()); // Проверяем, что это тот же клиент
     }
 
     @Test
-    void testGetAllClients() {
+    void getAllClients() {
+        clientManager.registerClient("Bob", "Brown", "bob@example.com");
+        clientManager.registerClient("Charlie", "Black", "charlie@example.com");
+
         List<Client> clients = clientManager.getAllClients();
-        assertEquals(3, clients.size());
-        assertEquals("Ivanov", clients.get(0).getLastName());
-        assertEquals("Petrov", clients.get(1).getLastName());
-        assertEquals("Sidorova", clients.get(2).getLastName());
+        assertEquals(2, clients.size()); // Проверяем, что количество клиентов отображается правильно
     }
 
     @Test
-    void testFindClientById() {
-        // Предполагается, что вы зарегистрировали несколько клиентов в setUp
-        Optional<Client> foundClient = clientManager.findClientById(1); // Убедитесь, что ID 1 существует
-        assertTrue(foundClient.isPresent(), "Клиент должен существовать");
-        assertEquals("Ivanov", foundClient.get().getLastName());
+    void removeClientById() {
+        Client client = clientManager.registerClient("David", "White", "david@example.com");
+        int clientId = client.getId(); // Получаем ID клиента
+
+        // Удаляем клиента
+        boolean removed = clientManager.removeClientById(clientId);
+        assertTrue(removed); // Проверяем, что удаление прошло успешно
+
+        // Проверяем, что клиент больше не найден
+        Optional<Client> foundClient = clientManager.findClientById(clientId);
+        assertFalse(foundClient.isPresent()); // Убедимся, что клиент не найден
     }
 
     @Test
-    void testFindClientsByName() {
-        List<Client> foundClients = clientManager.findClientsByName("Anna");
-        assertEquals(1, foundClients.size());
-        assertEquals("Sidorova", foundClients.get(0).getLastName());
-    }
+    void updateContactInfo() {
+        Client client = clientManager.registerClient("Eve", "Green", "eve@example.com");
+        int clientId = client.getId(); // Получаем ID клиента
 
+        // Обновляем контактную информацию
+        boolean updated = clientManager.updateContactInfo(clientId, "eve_new@example.com");
+        assertTrue(updated); // Проверяем, что обновление прошло успешно
+
+        // Проверяем, что контактная информация обновилась
+        Optional<Client> foundClient = clientManager.findClientById(clientId);
+        assertTrue(foundClient.isPresent());
+        assertEquals("eve_new@example.com", foundClient.get().getContactInfo());
+    }
     @Test
-    void testUpdateContactInfo() {
-        boolean updated = clientManager.updateContactInfo(1, "ivan.new@example.com");
-        assertTrue(updated);
-        assertEquals("ivan.new@example.com", clientManager.getClient("1").get().getContactInfo());
+    public void testUpdateNonExistentClient() {
+        // Проверяем обновление контактной информации несуществующего клиента
+        boolean updated = clientManager.updateContactInfo(999, "test@example.com"); // ID несуществующего клиента
+        assertFalse(updated); // Убедитесь, что метод возвращает false
     }
-
-    @Test
-    void testUpdateContactInfo_NonExistingClient() {
-        assertFalse(clientManager.updateContactInfo(99, "nonexisting@example.com"));
-    }
-
 } // test ended

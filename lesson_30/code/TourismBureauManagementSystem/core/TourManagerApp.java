@@ -1,7 +1,5 @@
 package TourismBureauManagementSystem.core;
 
-import TourismBureauManagementSystem.model.Tour;
-
 import java.time.LocalDate;
 
 public class TourManagerApp {

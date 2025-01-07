@@ -3,120 +3,105 @@ package TourismBureauManagementSystem.core;
 import TourismBureauManagementSystem.model.Client;
 import TourismBureauManagementSystem.model.QueueItem;
 import TourismBureauManagementSystem.model.Tour;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static TourismBureauManagementSystem.core.ReportGeneratorTest.*;
 
 // Консольный интерфейс
 public class TourismBureauConsole {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Инициализация менеджеров
         ClientManager clientManager = new SimpleClientManager();
-        TourManager tourManager = new SimpleTourManager();
-        QueueManager<QueueItem> queueManager = new SimpleTourManager.SimpleQueueManager<>();
+        QueueManager<QueueItem> clientQueue = new QueueManager<>();
+        TourManager tourManager = new TourManager();
+        ReportGenerator reportGenerator = new ReportGenerator(clientManager, clientQueue, tourManager);
 
-        // Создание объекта генератора отчетов
-        ReportGenerator reportGenerator = new ReportGenerator(clientManager, queueManager, tourManager);
-
-        // Основной цикл программы
         while (true) {
-            System.out.println("\n--- Туристическое агентство ---");
-            System.out.println("1. Зарегистрировать нового клиента");
+            System.out.println("\nМеню:");
+            System.out.println("1. Добавить клиента");
             System.out.println("2. Добавить тур");
             System.out.println("3. Добавить клиента в очередь");
-            System.out.println("4. Сгенерировать отчет");
-            System.out.println("5. Выход");
-            System.out.print("Выберите действие: ");
+            System.out.println("4. Обработать клиента из очереди");
+            System.out.println("5. Генерировать отчет по клиентам");
+            System.out.println("6. Генерировать отчет по турам");
+            System.out.println("7. Генерировать отчет по очереди");
+            System.out.println("0. Выход");
+            System.out.print("Выберите опцию: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Для очистки буфера ввода
+            scanner.nextLine(); // Считываем оставшийся символ новой строки
 
             switch (choice) {
-                case 1:
-                    // Регистрация нового клиента
+                case 1: // Добавить клиента
                     System.out.print("Введите имя клиента: ");
                     String firstName = scanner.nextLine();
                     System.out.print("Введите фамилию клиента: ");
                     String lastName = scanner.nextLine();
-                    System.out.print("Введите контактную информацию клиента: ");
+                    System.out.print("Введите контактную информацию: ");
                     String contactInfo = scanner.nextLine();
                     clientManager.registerClient(firstName, lastName, contactInfo);
-                    System.out.println("Клиент зарегистрирован.");
                     break;
 
-                case 2:
-                    // Добавление нового тура
-                    System.out.print("Введите ID тура: ");
-                    String tourId = scanner.nextLine();
-
-                    System.out.print("Введите направление тура: ");
+                case 2: // Добавить тур
+                    System.out.print("Введите место назначения: ");
                     String destination = scanner.nextLine();
-
-                    // Запрос даты
-                    System.out.print("Введите местные данные (дата начала тура в формате ГГГГ-ММ-ДД): ");
-                    String lokaleDatenString = scanner.nextLine();
-                    LocalDate lokaleDaten = null;
-
-                    // Преобразование строки в LocalDate
-                    try {
-                        lokaleDaten = LocalDate.parse(lokaleDatenString);
-                    } catch (Exception e) {
-                        System.out.println("Ошибка: неверный формат даты. Используйте ГГГГ-ММ-ДД.");
-                        continue; // Пропускаем, если неверный формат
-                    }
-
-                    System.out.print("Введите продолжительность тура (в днях): ");
+                    System.out.print("Введите дату (гггг-мм-дд): ");
+                    LocalDate date = LocalDate.parse(scanner.nextLine());
+                    System.out.print("Введите продолжительность тура (дни): ");
                     int duration = scanner.nextInt();
-                    scanner.nextLine(); // Очистка буфера
-
                     System.out.print("Введите цену тура: ");
                     double price = scanner.nextDouble();
-                    scanner.nextLine(); // Очистка буфера
-
-                    System.out.print("Введите количество свободных мест: ");
+                    System.out.print("Введите количество доступных мест: ");
                     int availableSeats = scanner.nextInt();
-                    scanner.nextLine(); // Очистка буфера
+                    scanner.nextLine(); // Считываем оставшийся символ новой строки
 
-                    // Создаем новый объект Tour
-                    Tour tour = new Tour(tourId, destination, lokaleDaten, duration, price, availableSeats);
-
-                    // Добавляем тур в менеджер
-                    tourManager.addTour(tour);
-                    System.out.println("Тур добавлен: " + tour);
+                    tourManager.addTour(new Tour(destination, date, duration, price, availableSeats));
                     break;
 
-                case 3:
-                    // Добавление клиента в очередь
-                    System.out.print("Введите ID клиента, которого хотите добавить в очередь: ");
-                    String clientId = scanner.nextLine();
-                    QueueItem queueItem = new QueueItem(clientId, QueueItem.RequestType.BOOKING, LocalDateTime.now());
-                    queueManager.addClient(queueItem);
-                    System.out.println("Клиент добавлен в очередь: " + queueItem);
+                case 3: // Добавить клиента в очередь
+                    System.out.print("Введите ID клиента (строка): ");
+                    String clientId = scanner.nextLine(); // Теперь это строка
+                    System.out.print("Введите тип запроса (например, INFO или BOOKING): ");
+                    String requestTypeInput = scanner.nextLine();
+                    QueueItem.RequestType requestType = QueueItem.RequestType.valueOf(requestTypeInput.toUpperCase()); // Преобразуем строку в RequestType
+                    LocalDateTime timestamp = LocalDateTime.now(); // Текущая дата и время
+
+                    QueueItem queueItem = new QueueItem(clientId, requestType, timestamp);
+                    clientQueue.addClient(queueItem);
                     break;
 
-                case 4:
-                    // Генерация отчета
-                    System.out.println("Генерация отчета...");
-                    reportGenerator.generateReport(); // Предполагается, что метод generateReport реализован
+                case 4: // Обработать клиента из очереди
+                    clientQueue.removeClient();
                     break;
 
-                case 5:
+                case 5: // Генерировать отчет по клиентам
+                    reportGenerator.generateClientReport();
+                    break;
+
+                case 6: // Генерировать отчет по турам
+                    reportGenerator.generateTourReport();
+                    break;
+
+                case 7: // Генерировать отчет по очереди
+                    reportGenerator.generateQueueReport();
+                    break;
+
+                case 0: // Выход
                     System.out.println("Выход из программы.");
                     scanner.close();
                     return;
 
                 default:
-                    System.out.println("Некорректный выбор. Попробуйте еще раз.");
+                    System.out.println("Недопустимый выбор. Попробуйте снова.");
                     break;
             }
         }
     }
-} // klass ended
+
+    } // klass ended
 /*
 1. Добавление клиентов и туров:
    - Команда 3 позволяет пользователю ввести данные о новом клиенте (id, имя, фамилию и контактную информацию).
@@ -124,9 +109,9 @@ public class TourismBureauConsole {
     цену и доступные места).
 
 2. Пользовательский ввод:
-   - `scanner.nextLine()` используется для считывания оставшейся строки после ввода,
+   - scanner.nextLine() используется для считывания оставшейся строки после ввода,
     чтобы избежать проблем с буферизацией.
-   - Даты форматируются как `LocalDate`, что требует правильного ввода от пользователя.
+   - Даты форматируются как LocalDate, что требует правильного ввода от пользователя.
 
 3. Отправка сообщений:
    - Программа выводит сообщения о том, что клиент или тур успешно добавлены.

@@ -1,5 +1,6 @@
 package TourismBureauManagementSystem.core;
 
+import TourismBureauManagementSystem.model.QueueItem;
 import TourismBureauManagementSystem.model.Tour;
 
 import java.util.ArrayList;
@@ -21,4 +22,5 @@ public class SimpleTourManager implements Manager<Tour> {
     public List<Tour> getAll() {
         return new ArrayList<>(tours); // Возвращаем копию списка
     }
+
 }

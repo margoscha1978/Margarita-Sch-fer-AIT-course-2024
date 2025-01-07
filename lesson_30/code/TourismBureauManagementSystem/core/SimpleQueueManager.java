@@ -19,4 +19,8 @@ public class SimpleQueueManager<T> implements Manager<T> {
     public List<T> getAll() {
         return new ArrayList<>(queueItems); // Возвращаем копию списка
     }
-}
+
+    public List<T> getAllClients() {
+        return List.of(); // return new ArrayList<>(clients.values());
+    }
+} // klass ended

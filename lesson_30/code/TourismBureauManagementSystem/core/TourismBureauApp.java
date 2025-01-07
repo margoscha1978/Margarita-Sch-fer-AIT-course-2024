@@ -9,75 +9,26 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.time.LocalDate;
 
-/*
-public class TourismBureauInterface {
-// эксперимент с одним туром и одним клиентом
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Инициализация менеджеров
-        ClientManager clientManager = new ReportGeneratorTest.SimpleClientManager();
-        TourManager tourManager = new ReportGeneratorTest.SimpleTourManager();
-        QueueManager queueManager = new ReportGeneratorTest.SimpleQueueManager();
-
-        // Создание объекта генератора отчетов
-        ReportGenerator reportGenerator = new ReportGenerator(clientManager, tourManager, queueManager);
-
-        // Пример добавления данных
-        clientManager.addClient(new Client("1", "Иван", "Иванов", "ivan@mail.ru"));
-        tourManager.addTour(new Tour("5", "Греция", LocalDate.parse("2024-10-12"), 5,
-                2500, 5));
-
-        System.out.println("Добро пожаловать в Туристическое бюро!");
-        boolean running = true;
-
-        while (running) {
-            System.out.println("Введите команду (1 - Отчет по клиентам, 2 - Отчет по турам, 0 - Выход): ");
-            int command = scanner.nextInt(); // Чтение команды
-
-            switch (command) {
-                case 1:
-                    String clientReport = reportGenerator.generateClientReport();
-                    System.out.println(clientReport);
-                    break;
-                case 2:
-                    String tourReport = reportGenerator.generateTourReport();
-                    System.out.println(tourReport);
-                    break;
-                case 0:
-                    System.out.println("Выход...");
-                    running = false; // Выход из цикла
-                    break;
-                default:
-                    System.out.println("Неверная команда. Пожалуйста, попробуйте еще раз.");
-            }
-        }
-
-        scanner.close();
-    }
-
-} // klass ended
-
- */
-
 public class TourismBureauApp {
     public static void main(String[] args) {
         // Инициализация менеджеров
         Manager<Client> clientManager = new SimpleClientManager();
         Manager<QueueItem> queueManager = new SimpleQueueManager<>();
         Manager<Tour> tourManager = new SimpleTourManager();
-        ReportGenerator reportGenerator = new ReportGenerator(clientManager, queueManager, tourManager);
+
+        ReportGenerator reportGenerator = new ReportGenerator((ClientManager) clientManager,
+                (QueueManager<QueueItem>) queueManager, (TourManager) tourManager);
+
         // Добавление клиентов
         clientManager.add(new Client("Иван", "Иванов", "ivan@example.com"));
         clientManager.add(new Client("Петр", "Петров", "petr@example.com"));
 
         // Задаем текущее время как startDate
         LocalDateTime startDate = LocalDateTime.now().plusDays(10); // Здесь задаём дату через 10 дней
-
         // Добавление туров
-        tourManager.add(new Tour("1", "Греция", startDate, 7, 1000.0, 20));
-        tourManager.add(new Tour("2", "Испания", startDate.plusDays(10), 5, 800.0, 15));
-        // Здесь добавляем еще 10 дней
+        tourManager.add(new Tour("1", startDate.toLocalDate(), 7, 1000.0, 20));
+        // Правильный вызов с LocalDate
+        tourManager.add(new Tour("2", startDate.toLocalDate(), 8, 800.0, 15));
 
         // Добавление элементов в очередь
         queueManager.add(new QueueItem("1", QueueItem.RequestType.CONSULTATION, LocalDateTime.now()));
@@ -128,7 +79,7 @@ public class TourismBureauApp {
                     double price = scanner.nextDouble();
                     System.out.print("Введите количество свободных мест: ");
                     int availableSeats = scanner.nextInt();
-                    Tour tour = new Tour(tourId, destination, lokaleDatenTime, duration, price, availableSeats);
+                    Tour tour = new Tour( destination, lokaleDatenTime, duration, price, availableSeats);
                     tourManager.add(tour);
                     System.out.println("Тур добавлен: " + tour.getId() + " в " + tour.getDestination());
                     scanner.nextLine(); // Очистка буфера
@@ -137,12 +88,33 @@ public class TourismBureauApp {
                 case 3:
                     // Запросить тур
                     System.out.print("Введите ID клиента, который запросил тур: ");
-                    String clientId = scanner.nextLine();
-                    System.out.print("Введите тип запроса: ");
-                    String requestType = scanner.nextLine();
-                    QueueItem queueItem = new QueueItem(clientId, requestType);
-                    queueManager.add(queueItem);
-                    System.out.println("Запрос клиента добавлен в очередь.");
+                    String clientId = scanner.nextLine(); // Считываем ID клиента
+
+                    // Предполагаем, что у вас есть enum RequestType
+                    QueueItem.RequestType requestType = null;
+                    boolean validRequestType = false;
+
+                    // Цикл для ввода корректного типа запроса
+                    while (!validRequestType) {
+                        System.out.print("Введите тип запроса (например, TOUR, CANCELLATION, INFO): ");
+                        String requestTypeString = scanner.nextLine();
+
+                        try {
+                            // Преобразование строки в RequestType
+                            requestType = QueueItem.RequestType.valueOf(requestTypeString.toUpperCase());
+                            validRequestType = true; // Если преобразование успешно, выходим из цикла
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Неверный тип запроса. Попробуйте снова."); // Сообщение об ошибке
+                        }
+                    }
+
+                    // Получаем текущее время
+                    LocalDateTime timestamp = LocalDateTime.now();
+
+                    // Создаем новый элемент очереди с учетом метки времени
+                    QueueItem queueItem = new QueueItem(clientId, requestType, timestamp);
+                    queueManager.add(queueItem); // Добавляем в очередь
+                    System.out.println("Запрос клиента добавлен в очередь."); // Подтверждение
                     break;
 
                 case 4:

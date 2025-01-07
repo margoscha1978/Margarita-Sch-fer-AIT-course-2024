@@ -1,5 +1,6 @@
 package TourismBureauManagementSystem.core;
 
+import TourismBureauManagementSystem.model.Tour;
 /*
 Создаем класс TourManager:
 - основная задача класса - управлять информацией о турах (добавление, удаление, получение данных).
@@ -11,15 +12,12 @@ package TourismBureauManagementSystem.core;
     - Tour findTourById (String tourId): получение тура по идентификатору.
     - List<Tour> getAllTours(): получение всех туров.
  */
-
-import TourismBureauManagementSystem.model.Tour;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class  TourManager {
+public class TourManager {
     private List<Tour> tours;
 
     public TourManager() {
@@ -27,14 +25,14 @@ public class  TourManager {
     }
 
     public void addTour(Tour tour) {
-        // Проверка на null значение даты
+        // Проверка на null значение
         if (tour == null) {
             throw new IllegalArgumentException("Тур не может быть null.");
         }
 
         // Проверка на дубликат ID
         for (Tour existingTour : tours) {
-            if (existingTour.getId().equals(tour.getId())) {
+            if (existingTour.getId() == tour.getId()) { // Исправлено на корректное сравнение int
                 throw new IllegalArgumentException("Тур с таким ID уже существует: " + tour.getId());
             }
         }
@@ -43,7 +41,7 @@ public class  TourManager {
         System.out.println("Тур добавлен: " + tour);
     }
 
-    public boolean removeTour(String tourId) { // удаление тура по идентификатору
+    public boolean removeTour(int tourId) { // Изменено на int
         Tour tour = findTourById(tourId);
         if (tour != null) {
             tours.remove(tour);
@@ -55,9 +53,9 @@ public class  TourManager {
         }
     }
 
-    public Tour findTourById(String id) { // получение тура по идентификатору
+    public Tour findTourById(int id) { // Изменено на int
         for (Tour tour : tours) {
-            if (tour.getId().equals(id)) {
+            if (tour.getId() == id) { // Сравнение int
                 return tour;
             }
         }
@@ -68,4 +66,21 @@ public class  TourManager {
         return Collections.unmodifiableList(new ArrayList<>(tours)); // Возвращаем копию списка туров
     }
 
+    // Метод для обновления тура
+    public boolean updateTour(int tourId, String destination, LocalDate date, int duration, double price, int availableSeats) {
+        Tour tour = findTourById(tourId);
+        if (tour != null) {
+            // Можно обновить только те поля, которые нужно обновить
+            tour.setDestination(destination);
+            tour.setDate(date);
+            tour.setDuration(duration);
+            tour.setPrice(price);
+            tour.updateAvailableSeats(availableSeats - tour.getAvailableSeats()); // Обновляем доступные места
+            System.out.println("Тур с ID " + tourId + " был обновлён.");
+            return true;
+        } else {
+            System.out.println("Тур с ID " + tourId + " не найден.");
+            return false;
+        }
+    }
 } // klass ended

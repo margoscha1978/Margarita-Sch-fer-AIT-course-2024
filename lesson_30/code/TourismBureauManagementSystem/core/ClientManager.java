@@ -1,80 +1,78 @@
 package TourismBureauManagementSystem.core;
+
 import TourismBureauManagementSystem.model.Client;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ClientManager {
-    private List<Client> clients; // Список клиентов
-
-    // Конструктор
-    public ClientManager() {
-        this.clients = new ArrayList<>(); // Инициализируем список
-    }
+    // Словарь для хранения клиентов с их уникальными ID
+    private final HashMap<Integer, Client> clients = new HashMap<>();
+    // private static int idCounter = 0; // Счетчик для уникальных ID клиентов
 
     // Метод для регистрации нового клиента
-    public void registerClient(String firstName, String lastName, String contactInfo) {
-        // Создаем нового клиента
-        Client newClient = new Client(firstName, lastName, contactInfo);
-
-        // Проверка наличия клиента с теми же контактными данными
-        for (Client existingClient : clients) {
-            if (existingClient.getContactInfo().equals(newClient.getContactInfo())) {
-                throw new IllegalArgumentException("Client with the same contact info already exists.");
-            }
-        }
-
-        // Добавляем нового клиента в список
-        clients.add(newClient);
-
+    public Client registerClient(String firstName, String lastName, String contactInfo) {
+        // Создаем нового клиента с уникальным ID
+        Client client = new Client(firstName, lastName, contactInfo);
+        // Сохраняем клиента в словаре, используя его ID как ключ
+        clients.put(client.getId(), client);
+        return client;
     }
+
     // Метод для поиска клиента по ID
     public Optional<Client> findClientById(int id) {
-        return clients.stream()
-                .filter(client -> client.getId() == id) // Фильтруем клиентов по ID
-                .findFirst(); // Возвращаем первого найденного клиента
-    }
-
-    // Метод для удаления клиента по идентификатору
-    public boolean removeClient(String clientId) {
-        return clients.removeIf(client -> String.valueOf(client.getId()).equals(clientId));
-        // Удаляет клиента на основе ID
-    }
-
-    // Метод для получения клиента по идентификатору
-    public Optional<Client> getClient(String clientId) {
-        return clients.stream()
-                .filter(client -> String.valueOf(client.getId()).equals(clientId))
-                .findFirst(); // Возвращает первого клиента, соответствующего ID
+        // Возвращаем клиента, оборачивая его в Optional
+        return Optional.ofNullable(clients.get(id));
     }
 
     // Метод для получения всех клиентов
     public List<Client> getAllClients() {
-        return new ArrayList<>(clients); // Возвращает копию списка клиентов
+        // Возвращаем список всех клиентов
+        return new ArrayList<>(clients.values());
     }
 
-    // Метод для поиска клиентов по имени или фамилии (независимо от регистра)
-    public List<Client> findClientsByName(String name) {
-        String nameLowerCase = name.toLowerCase();
-        List<Client> foundClients = new ArrayList<>();
-        for (Client client : clients) {
-            if (client.getFirstName().toLowerCase().contains(nameLowerCase) ||
-                    client.getLastName().toLowerCase().contains(nameLowerCase)) {
-                foundClients.add(client); // Добавляет клиента в список при совпадении имени или фамилии
-            }
+    // Метод для удаления клиента по ID
+    public boolean removeClientById(int id) {
+        if (clients.containsKey(id)) {
+            clients.remove(id);
+            return true; // Возвращаем true, если удаление произошло успешно
         }
-        return foundClients; // Возвращает список найденных клиентов
+        return false; // Возвращаем false, если клиент не найден
     }
 
     // Метод для обновления контактной информации клиента
     public boolean updateContactInfo(int id, String newContactInfo) {
         Optional<Client> clientOpt = findClientById(id);
         if (clientOpt.isPresent()) {
-            clientOpt.get().setContactInfo(newContactInfo);
-            return true; // Возвращаем true, если обновление прошло успешно
+            Client client = clientOpt.get();
+            client.updateContactInfo(newContactInfo);
+            return true; // Возвращаем true, если обновление произошло успешно
         }
-        return false; // Возвращает false, если клиент не найден
+        return false; // Возвращаем false, если клиент не найден
     }
 
-}
+    // Метод для поиска клиентов по имени или фамилии
+    public List<Client> findClientsByName(String name) {
+        // Ищем клиентов, у которых имя или фамилия соответствует переданному параметру
+        return clients.values().stream()
+                .filter(client -> client.getFirstName().equalsIgnoreCase(name) ||
+                        client.getLastName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
+    }
+} // klass ended
+/*
+ Описание каждого метода
+
+1. registerClient(...): Создает нового клиента и добавляет его в коллекцию clients, используя его уникальный ID.
+2. findClientById(int id): Ищет клиента по его ID и возвращает его в виде Optional<Client>
+ для безопасного обращения к объекту.
+3. getAllClients(): Возвращает список всех клиентов в виде List<Client>.
+4. removeClientById(int id): Удаляет клиента по его ID из коллекции. Возвращает true,
+если клиент был успешно найден и удален, и false, если клиента с таким ID не существует.
+5. updateContactInfo(int id, String newContactInfo): Обновляет контактную информацию клиента.
+ Если клиент с указанным ID найден, его информация обновляется, и метод возвращает true.
+  Если клиента не существует, возвращает false.
+ */

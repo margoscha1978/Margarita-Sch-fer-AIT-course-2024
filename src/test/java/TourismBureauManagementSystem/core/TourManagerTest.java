@@ -20,8 +20,8 @@ class TourManagerTest {
 
     @Test
     void testAddTour_ValidTour() {
-        Tour tour = new Tour("1", "Китай", LocalDate.of(2024, 10, 12),
-                10, 4500.0, 5);
+        Tour tour = new Tour("1",  LocalDate.of(2024, 10, 12),
+                10,  4500.0,5);
         tourManager.addTour(tour);
         assertEquals(1, tourManager.getAllTours().size(), "Ожидается, что будет 1 тур.");
     }
@@ -36,9 +36,9 @@ class TourManagerTest {
 
     @Test
     void testAddTour_DuplicateId() {
-        Tour tour1 = new Tour("1", "Китай", LocalDate.of(2024, 10, 12),
+        Tour tour1 = new Tour("1",  LocalDate.of(2024, 10, 12),
                 10, 4500.0, 5);
-        Tour tour2 = new Tour("1", "Япония", LocalDate.of(2024, 11, 12),
+        Tour tour2 = new Tour("1",  LocalDate.of(2024, 11, 12),
                 7, 5000.0, 4);
         tourManager.addTour(tour1);
 
@@ -50,32 +50,32 @@ class TourManagerTest {
 
     @Test
     void testRemoveTour_ExistingId() {
-        Tour tour = new Tour("1", "Китай", LocalDate.of(2024, 10, 12), 10, 4500.0, 5);
+        Tour tour = new Tour("1",  LocalDate.of(2024, 10, 12), 10, 4500.0, 5);
         tourManager.addTour(tour);
-        assertTrue(tourManager.removeTour("1"), "Тур с ID 1 должен быть успешно удалён.");
+        assertTrue(tourManager.removeTour(1), "Тур с ID 1 должен быть успешно удалён.");
         assertEquals(0, tourManager.getAllTours().size(), "Ожидается," +
                 " что не будет туров после удаления.");
     }
 
     @Test
     void testRemoveTour_NonExistingId() {
-        assertFalse(tourManager.removeTour("999"), "Не должно быть возможности " +
+        assertFalse(tourManager.removeTour(999), "Не должно быть возможности " +
                 "удалить несуществующий тур.");
     }
 
     @Test
     void testFindTourById_ExistingId() {
-        Tour tour = new Tour("2", "Испания", LocalDate.of(2024, 11, 12),
+        Tour tour = new Tour("2",  LocalDate.of(2024, 11, 12),
                 7, 3000.0, 4);
         tourManager.addTour(tour);
-        Tour foundTour = tourManager.findTourById("2");
+        Tour foundTour = tourManager.findTourById(2);
         assertNotNull(foundTour, "Тур с ID 2 должен быть найден.");
         assertEquals("Испания", foundTour.getDestination(), "Должен вернуть правильный тур.");
     }
 
     @Test
     void testFindTourById_NonExistingId() {
-        assertNull(tourManager.findTourById("999"), "Не должно быть возможности найти несуществующий тур.");
+        assertNull(tourManager.findTourById(999), "Не должно быть возможности найти несуществующий тур.");
     }
 
     @Test
@@ -87,9 +87,9 @@ class TourManagerTest {
 
     @Test
     void testGetAllTours_WhenNotEmpty() {
-        tourManager.addTour(new Tour("1", "Китай", LocalDate.of(2024, 10, 12),
+        tourManager.addTour(new Tour("1",  LocalDate.of(2024, 10, 12),
                 10, 4500.0, 5));
-        tourManager.addTour(new Tour("2", "Испания", LocalDate.of(2024, 11, 12),
+        tourManager.addTour(new Tour("2",  LocalDate.of(2024, 11, 12),
                 7, 3000.0, 4));
         List<Tour> tours = tourManager.getAllTours();
 
@@ -98,12 +98,12 @@ class TourManagerTest {
 
     @Test
     void testGetAllTours_ListShouldNotBeModifiable() {
-        tourManager.addTour(new Tour("1", "Китай", LocalDate.of(2024, 10, 12),
+        tourManager.addTour(new Tour("1",  LocalDate.of(2024, 10, 12),
                 10, 4500.0, 5));
         List<Tour> tours = tourManager.getAllTours();
 
         assertThrows(UnsupportedOperationException.class, () -> {
-            tours.add(new Tour("2", "Испания", LocalDate.of(2024, 11, 12),
+            tours.add(new Tour("2",  LocalDate.of(2024, 11, 12),
                     7, 3000.0, 4));
         }, "Список не должен поддерживать модификацию.");
     }

@@ -2,6 +2,7 @@ package TourismBureauManagementSystem.core;
 /*
 создаем списки клиентов для работы программы
  */
+
 import TourismBureauManagementSystem.model.Client;
 
 import java.util.List;
@@ -96,7 +97,7 @@ public class ClientManagerApp {
     scanner.nextLine(); // Очистка буфера
     System.out.print("Введите ID клиента для удаления: ");
     String clientId = scanner.nextLine();
-    if (clientManager.removeClient(clientId)) {
+    if (clientManager.removeClientById(1)) {
       System.out.println("Клиент успешно удален.");
     } else {
       System.out.println("Клиент с таким ID не найден.");
@@ -107,7 +108,7 @@ public class ClientManagerApp {
     scanner.nextLine(); // Очистка буфера
     System.out.print("Введите ID клиента: ");
     String clientId = scanner.nextLine();
-    clientManager.getClient(clientId)
+    clientManager.findClientById(Integer.parseInt(clientId))
             .ifPresentOrElse(client -> System.out.println(client),
                     () -> System.out.println("Клиент с таким ID не найден."));
   }
@@ -162,5 +163,5 @@ public class ClientManagerApp {
     ClientManagerApp app = new ClientManagerApp();
     app.start();
   }
-}
+} // class ended
 

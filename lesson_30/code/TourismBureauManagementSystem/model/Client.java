@@ -1,31 +1,23 @@
 package TourismBureauManagementSystem.model;
-/*
-- Класс Client: Описывает клиента с уникальными полями и методами для управления данными.
-- Методы:
-- registerClient: Регистрирует нового клиента.
-- findClientById: Находит клиента по-уникальному ID.
-- findClientsByName: Находит клиентов по имени или фамилии (независимо от регистра).
-- removeClientById: Удаляет клиента по-уникальному ID.
-- updateContactInfo: Обновляет контактную информацию клиента.
-- Пример использования: В main методе показан пример регистрации клиентов, их поиска, обновления данных и удаления.
- */
 
 import java.util.Objects;
 
 public class Client {
-    private static int idCounter = 0; // Счетчик для генерации уникальных ID
-    private int id; // Уникальный идентификатор клиента
-    private String firstName; // Имя клиента
-    private String lastName; // Фамилия клиента
-    private String contactInfo; // Контактная информация (например, email)
+
+    private static int idCounter = 0;
+    private final int id; // Уникальный ID клиента
+    private String firstName;
+    private String lastName;
+    private String contactInfo;
 
     public Client(String firstName, String lastName, String contactInfo) {
-        this.id = ++idCounter; // Генерируем новый ID
+        this.id = ++idCounter;
         this.firstName = firstName;
         this.lastName = lastName;
         this.contactInfo = contactInfo;
     }
 
+    // Геттеры и сеттеры
     public int getId() {
         return id;
     }
@@ -42,25 +34,31 @@ public class Client {
         return contactInfo;
     }
 
-    // Метод для обновления контактной информации
-    public void setContactInfo(String newContactInfo) {
-        this.contactInfo = newContactInfo;
+    public void updateContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
     }
 
-    // Переопределяем equals и hashCode для правильного сравнения клиентов
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Client)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(contactInfo, client.contactInfo);
+        return id == client.id && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName)
+                && Objects.equals(contactInfo, client.contactInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactInfo);
+        return Objects.hash(id, firstName, lastName, contactInfo);
     }
-}
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Client{");
+        sb.append("id=").append(id);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", contactInfo='").append(contactInfo).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+} // klass ended
