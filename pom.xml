@@ -23,6 +23,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
@@ -33,6 +40,69 @@
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependencies>
+            <!-- JUnit Jupiter Engine -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <!-- Группа JUnit Jupiter -->
+                <!-- JUnit Jupiter group -->
 
+                <artifactId>junit-jupiter-engine</artifactId>
+                <!-- Артефакт для выполнения тестов JUnit -->
+                <!-- Artifact for executing JUnit tests -->
+
+                <version>5.10.3</version>
+                <!-- Версия JUnit Jupiter -->
+                <!-- JUnit Jupiter version -->
+
+                <scope>test</scope>
+                <!-- Ограничение зависимости только для тестов -->
+                <!-- Dependency scope limited to tests -->
+            </dependency>
+
+            <!-- JUnit Jupiter Params -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <!-- Группа JUnit Jupiter -->
+                <!-- JUnit Jupiter group -->
+
+                <artifactId>junit-jupiter-params</artifactId>
+                <!-- Артефакт для параметризированных тестов JUnit -->
+                <!-- Artifact for parameterized JUnit tests -->
+
+                <version>5.10.3</version>
+                <!-- Версия JUnit Jupiter -->
+                <!-- JUnit Jupiter version -->
+
+                <scope>test</scope>
+                <!-- Ограничение зависимости только для тестов -->
+                <!-- Dependency scope limited to tests -->
+            </dependency>
+        </dependencies>
+
+    </dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
+        <scope>test</scope>
+    </dependency>
 </project>

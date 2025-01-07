@@ -1,0 +1,66 @@
+Уровни логирования
+TRACE очень подробная информация
+DEBUG подробная информация для отладки
+INFO информация об общем состоянии или событиях в приложении
+WARN внимание, предупреждение о потенциальных проблемах
+ERROR критическая ошибка требующая внимания и корректировки приложения
+
+
+ <!--
+   Корневой логгер (root), который определяет минимальный уровень логирования для всех сообщений.
+    - level="DEBUG": Указывает минимальный уровень логирования для записи сообщений в лог.
+      Уровни, которые ниже указанного уровня, будут игнорироваться.
+      Порядок уровней логирования: TRACE < DEBUG < INFO < WARN < ERROR.
+      Здесь установлен уровень DEBUG, что означает, что сообщения уровней DEBUG и выше (INFO, WARN, ERROR) будут записаны.
+    -->
+    <root level="DEBUG">
+        <!--
+        Привязка аппендеров к корневому логгеру:
+        - appender-ref ref="STDOUT": Сообщения будут выводиться в консоль через аппендер STDOUT.
+        - appender-ref ref="FILE": Сообщения также будут записываться в файл через аппендер FILE.
+        -->
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
+
+
+        <!-- Logback -->
+<dependency>
+<groupId>ch.qos.logback</groupId>
+<!-- Группа Logback -->
+<!-- Logback group -->
+
+<artifactId>logback-classic</artifactId>
+<!-- Артефакт Logback для поддержки классического логгирования -->
+<!-- Logback artifact for classic logging support -->
+
+<version>1.2.3</version>
+<!-- Версия Logback -->
+<!-- Logback version -->
+</dependency>
+
+
+        <!-- SLF4J API -->
+<dependency>
+<groupId>org.slf4j</groupId>
+<!-- Группа SLF4J -->
+<!-- SLF4J group -->
+
+<artifactId>slf4j-api</artifactId>
+<!-- Артефакт SLF4J API для абстракции логгирования -->
+<!-- SLF4J API artifact for logging abstraction -->
+
+<version>1.7.30</version>
+<!-- Версия SLF4J API -->
+<!-- SLF4J API version -->
+</dependency>
+
+
+
+<dependency>
+<groupId>com.github.javafaker</groupId>
+<artifactId>javafaker</artifactId>
+<version>1.0.2</version>
+</dependency>

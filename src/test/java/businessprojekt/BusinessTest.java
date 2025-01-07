@@ -12,7 +12,7 @@ class BusinessTest {
     @BeforeEach
     void setUp() {
         // Инициализируем бизнес перед каждым тестом
-        business = new Business("Tech Corp");
+        Business business = new Business("Tech Corp");
     }
 
     @Test
@@ -92,4 +92,24 @@ class BusinessTest {
         double expectedTotalSalary = 60000 + 80000;
         assertEquals(expectedTotalSalary, business.getTotalCompanySalary());
     }
-}
+}  // test ended
+
+/*
+ Описание тестов
+
+1. testAddDepartment():
+   - Тестирует создание нового отдела и проверяет его добавление в бизнес.
+
+2. testRemoveDepartment():
+   - Проверяет, удален ли отдел если он ошибочно создан или утрачен.
+
+3. testGetDepartment():
+   - Проверяет,возможность найти отдел по названию.
+
+4. testGetUniquePositions():
+   - Проверяет,создание отдела, добавление его в бизнес и заполняем отдел сотрудниками.
+
+5. testGetTotalCompanySalary():
+  - создаем и заполняем отделя сотрудниками, включаем их в бизнес и считаем общую зарплату сотрудников.
+
+ */

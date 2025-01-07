@@ -2,40 +2,39 @@
 <module type="JAVA_MODULE" version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/lesson_01_intro/traum" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_02/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_03/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_04/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_05/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_06/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_10/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_11/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_12/ArrayMetods" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_12/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_13/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_14/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_15/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_16/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_17/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_18/ClassWork18/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_18/ClassWork18/code/computer_shop/model" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_18/ClassWork18/code/incheritance/people/model" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_18/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_19/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_20/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_21/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_22/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_23/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_24/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_25/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_26/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_27/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_28/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_29/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_30/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_7/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_8/code" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lesson_9/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_01_intro/traum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_02/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_03/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_04/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_05/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_06/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_10/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_11/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_12/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_13/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_14/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_15/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_16/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_17/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_18/ClassWork18/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_18/ClassWork18/code/computer_shop/model" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_18/ClassWork18/code/incheritance/people/model" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_18/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_19/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_20/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_21/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_22/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_23/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_24/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_25/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_26/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_27/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_28/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_29/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_30/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_7/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_8/code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java/lesson_9/code" isTestSource="false" />
     </content>
   </component>
 </module>
