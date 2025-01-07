@@ -1,5 +1,7 @@
 package TourismBureauManagementSystem.core;
 
+import TourismBureauManagementSystem.model.Tour;
+
 import java.time.LocalDate;
 
 public class TourManagerApp {
@@ -7,16 +9,16 @@ public class TourManagerApp {
         TourManager tourManager = new TourManager();
 
         // Создание туров
-        Tour tour1 = new Tour("1", "Китай", LocalDate.parse("2024-10-12"), 10,
-                4500.0, 5);
-        Tour tour2 = new Tour("2", "Италия", LocalDate.parse("2024-12-25"), 15,
-                2300.0, 5);
-        Tour tour3 = new Tour("3", "Испания", LocalDate.parse("2024-10-12"), 5,
-                3700.0, 10);
-        Tour tour4 = new Tour("4", "Сербия", LocalDate.parse("2024-12-25"), 10,
-                3300.0, 5);
-        Tour tour5 = new Tour("5", "Греция", LocalDate.parse("2024-10-12"), 5,
-                2500.0, 5);
+        Tour tour1 = new Tour("Китай",  LocalDate.parse("2024-10-12"), 10,4500,
+                 5);
+        Tour tour2 = new Tour("Италия",  LocalDate.parse("2024-12-25"), 5,
+                 2300,5);
+        Tour tour3 = new Tour("Испания",  LocalDate.parse("2024-10-12"), 10,3700,
+                 10);
+        Tour tour4 = new Tour("Сербия",  LocalDate.parse("2024-12-25"), 5,
+                 3300,5);
+        Tour tour5 = new Tour("Греция",  LocalDate.parse("2024-10-12"), 5,
+                 2500,5);
 
         // Добавление туров
         tourManager.addTour(tour1);
@@ -26,11 +28,11 @@ public class TourManagerApp {
         tourManager.addTour(tour5);
 
         // Поиск и вывод тура
-        Tour foundTour = tourManager.findTourById("1");
+        Tour foundTour = tourManager.findTourById(1);
         System.out.println("Найденный тур: " + foundTour);
 
         // Удаление тура
-        tourManager.removeTour("1");
+        tourManager.removeTour(1);
 
         // Получение всех туров
         System.out.println("Все туры: " + tourManager.getAllTours());
