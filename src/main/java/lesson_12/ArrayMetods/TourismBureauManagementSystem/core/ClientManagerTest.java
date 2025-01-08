@@ -1,6 +1,7 @@
 package lesson_12.ArrayMetods.TourismBureauManagementSystem.core;
 
 import TourismBureauManagementSystem.core.ClientManager;
+import TourismBureauManagementSystem.model.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ class ClientManagerTest {
 
     @Test
     void testAddNewClient() {
-        Client client = new Client("3", "Светлана"," Сидорова","svetlana@mail.ru");
+        Client client = new Client("Светлана", " Сидорова","svetlana@mail.ru");
         clientManager.addClient(client);
         assertEquals(1, clientManager.getAllClients().size());
         assertEquals(true, clientManager.getAllClients().contains(client)); // Проверяем, что клиент добавлен в список
@@ -26,7 +27,7 @@ class ClientManagerTest {
 
     @Test
     void testAddDuplicateClient() {
-        Client client = new Client("3", "Светлана"," Сидорова","svetlana@mail.ru");
+        Client client = new Client("Светлана", " Сидорова","svetlana@mail.ru");
         clientManager.addClient(client);
         clientManager.addClient(client); // Попытка добавить дубликат
         assertEquals(1, clientManager.getAllClients().size()); // В списке должно остаться 1 клиент
@@ -34,7 +35,7 @@ class ClientManagerTest {
 
     @Test
     void testRemoveExistingClient() {
-        Client client = new Client("3", "Светлана"," Сидорова","svetlana@mail.ru");
+        Client client = new Client("Светлана", " Сидорова","svetlana@mail.ru");
         clientManager.addClient(client);
         assertTrue(clientManager.removeClient("3"));
         assertTrue(clientManager.getAllClients().isEmpty()); // Список клиентов должен быть пустым
@@ -47,7 +48,7 @@ class ClientManagerTest {
 
     @Test
     void testGetExistingClientById() {
-        Client client = new Client("1", "Иван"," Иванов","ivan@mail.ru");
+        Client client = new Client("Иван", " Иванов","ivan@mail.ru");
         clientManager.addClient(client);
 
         List<Client> clients = clientManager.getAllClients();
@@ -64,8 +65,8 @@ class ClientManagerTest {
 
     @Test
     void testGetAllClients() {
-        Client client1 = new Client("1", "Иван", "Иванов","ivan@mail.ru");
-        Client client2 = new Client("6", "Петр"," Петров","petr@mail.ru");
+        Client client1 = new Client("Иван", "Иванов", "ivan@mail.ru");
+        Client client2 = new Client("6", " Петров","petr@mail.ru");
         clientManager.addClient(client1);
         clientManager.addClient(client2);
         List<Client> clients = clientManager.getAllClients();
@@ -81,18 +82,19 @@ class ClientManagerTest {
 
     @Test
     void testGetAllClientsReturnsCopy() {
-        Client client = new Client("1", "Иван"," Иванов","ivan@mail.ru");
+        Client client = new Client("Иван"," Иванов","ivan@mail.ru");
         clientManager.addClient(client);
         List<Client> clients = clientManager.getAllClients();
         clients.remove(client); // Удаляем из возвращенного списка
-        assertEquals(1, clientManager.getAllClients().size()); // Оригинальный список все еще должен содержать 1 клиента
+        assertEquals(1, clientManager.getAllClients().size());
+        // Оригинальный список все еще должен содержать 1 клиента
 
     }
 
     @Test
     void testRemoveMultipleClients() {
-        Client client1 = new Client("1", "Иван"," Иванов","ivan@mail.ru");
-        Client client2 = new Client("6", "Петр"," Петров","petr@mail.ru");
+        Client client1 = new Client("Иван", " Иванов","ivan@mail.ru");
+        Client client2 = new Client("Петр", " Петров","petr@mail.ru");
 
         clientManager.addClient(client1);
         clientManager.addClient(client2);
@@ -112,4 +114,4 @@ class ClientManagerTest {
         assertFalse(remainingClients.contains(client1)); // Проверяем, что client1 отсутствует в списке
     }
 
-} // klass ended
+} // test ended

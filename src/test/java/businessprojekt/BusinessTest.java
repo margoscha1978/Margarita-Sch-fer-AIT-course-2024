@@ -9,107 +9,108 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BusinessTest {
 
+    private Business business;
+    private Department salesDepartment;
+    private Department hrDepartment;
+
     @BeforeEach
     void setUp() {
-        // Инициализируем бизнес перед каждым тестом
-        Business business = new Business("Tech Corp");
+        business = new Business("MyCompany");
+        salesDepartment = new Department("Sales");
+        hrDepartment = new Department("HR");
     }
 
     @Test
-    public void testAddDepartment() {
-        // Создаем новый отдел
-        Department dept = new Department("IT");
-
-        // Добавляем отдел в бизнес
-        business.addDepartment(dept);
-
-        // Проверяем, что отдел был добавлен
-        assertNotNull(business.getDepartment("IT"));
+    void testAddDepartment() {
+        business.addDepartment(salesDepartment);
+        assertNotNull(business.getDepartment("Sales"));
     }
 
     @Test
-    public void testRemoveDepartment() {
-        // Создаем и добавляем отдел
-        Department dept = new Department("IT");
-        business.addDepartment(dept);
-
-        // Удаляем отдел
-        business.removeDepartment("IT");
-
-        // Проверяем, что отдел был удалён
-        assertNull(business.getDepartment("IT"));
+    void testAddNullDepartment() {
+        business.addDepartment(null);
+        assertNull(business.getDepartment("Sales")); // департамент добавлен
     }
 
     @Test
-    public void testGetDepartment() {
-        // Создаем и добавляем отдел
-        Department dept = new Department("IT");
-        business.addDepartment(dept);
-
-        // Проверяем, что можно получить отдел по названию
-        assertEquals(dept, business.getDepartment("IT"));
-        assertNull(business.getDepartment("HR")); // Не существующий отдел
+    void testRemoveDepartment() {
+        business.addDepartment(salesDepartment);
+        business.removeDepartment("Sales");
+        assertNull(business.getDepartment("Sales")); // департамент удален
     }
 
     @Test
-    public void testGetUniquePositions() {
-        // Создаем отдел и добавляем сотрудников
-        Department itDept = new Department("IT");
-        itDept.addEmployee(new Employee("1", "John Doe", "Developer", 60000));
-        itDept.addEmployee(new Employee("2", "Jane Smith", "Tester", 55000));
-
-        Department hrDept = new Department("HR");
-        hrDept.addEmployee(new Employee("3", "Alice", "Manager", 70000));
-
-        // Добавляем отделы в бизнес
-        business.addDepartment(itDept);
-        business.addDepartment(hrDept);
-
-        // Получаем уникальные должности компании
-        HashSet<String> uniquePositions = business.getAllPositions();
-
-        // Проверяем наличие уникальных должностей
-        assertTrue(uniquePositions.contains("Developer"));
-        assertTrue(uniquePositions.contains("Tester"));
-        assertTrue(uniquePositions.contains("Manager"));
-        assertEquals(3, uniquePositions.size()); // Проверяем общее количество уникальных должностей
+    void testRemoveNonExistentDepartment() {
+        business.removeDepartment("NonExistent"); // ошибка в названии департамента
+        assertNull(business.getDepartment("NonExistent")); // нет такого департамента
     }
 
     @Test
-    public void testGetTotalCompanySalary() {
-        // Создаем и добавляем отделы с сотрудниками
-        Department itDept = new Department("IT");
-        itDept.addEmployee(new Employee("1", "John Doe", "Developer", 60000));
+    void testGetDepartment() { // проверяем корректную работу геттеров
+        business.addDepartment(salesDepartment);
+        Department retrieved = business.getDepartment("Sales");
+        assertEquals(salesDepartment, retrieved);
+    }
 
-        Department hrDept = new Department("HR");
-        hrDept.addEmployee(new Employee("2", "Jane Smith", "Manager", 80000));
+    @Test
+    void testGetDepartmentNullOrEmpty() { // проверяем на ноль
+        assertNull(business.getDepartment(null));
+        assertNull(business.getDepartment("")); // возвращаем ноль
+    }
 
-        // Добавляем отделы в бизнес
-        business.addDepartment(itDept);
-        business.addDepartment(hrDept);
+    @Test
+    void testGetAllPositions() { // проверяем разные должности в департаменте
+        Employee emp1 = new Employee("John", "Sales", "Sales Manager", 50000);
+        Employee emp2 = new Employee("Jane", "Sales", "Sales Associate", 40000);
+        salesDepartment.addEmployee(emp1);
+        salesDepartment.addEmployee(emp2);
+        business.addDepartment(salesDepartment);
 
-        // Проверяем общую зарплату компании
-        double expectedTotalSalary = 60000 + 80000;
-        assertEquals(expectedTotalSalary, business.getTotalCompanySalary());
+        assertTrue(business.getAllPositions().contains("Sales Manager"));
+        assertTrue(business.getAllPositions().contains("Sales Associate"));
+    }
+
+    @Test
+    void testGetTotalCompanySalary() { // суммарный доход департамента
+        Employee emp1 = new Employee("John", "Sales", "Sales Manager", 50000);
+        Employee emp2 = new Employee("Jane", "HR", "HR Manager", 60000);
+        salesDepartment.addEmployee(emp1);
+        hrDepartment.addEmployee(emp2);
+        business.addDepartment(salesDepartment);
+        business.addDepartment(hrDepartment);
+
+        double totalSalary = business.getTotalCompanySalary();
+        assertEquals(110000, totalSalary);
+    }
+
+    @Test
+    void testGetTotalCompanySalaryNoEmployees() { // ошибка ноль вызванная отсутствием сотрудников
+        double totalSalary = business.getTotalCompanySalary();
+        assertEquals(0, totalSalary);
     }
 }  // test ended
 
 /*
  Описание тестов
 
-1. testAddDepartment():
-   - Тестирует создание нового отдела и проверяет его добавление в бизнес.
+1. testAddDepartment: Проверяет, что добавленный отдел действительно возвращается методом getDepartment.
 
-2. testRemoveDepartment():
-   - Проверяет, удален ли отдел если он ошибочно создан или утрачен.
+2. testAddNullDepartment: Проверяет, что попытка добавить null отдел не приводит к его добавлению.
 
-3. testGetDepartment():
-   - Проверяет,возможность найти отдел по названию.
+3. testRemoveDepartment: Проверяет, что отдел может быть успешно удален.
 
-4. testGetUniquePositions():
-   - Проверяет,создание отдела, добавление его в бизнес и заполняем отдел сотрудниками.
+4. testRemoveNonExistentDepartment: Проверяет удаление несуществующего отдела — метод не должен выдавать ошибки.
 
-5. testGetTotalCompanySalary():
-  - создаем и заполняем отделя сотрудниками, включаем их в бизнес и считаем общую зарплату сотрудников.
+5. testGetDepartment: Проверяет, что метод getDepartment возвращает правильный объект отдела.
+
+6. testGetDepartmentNullOrEmpty: Проверяет, что метод возвращает null, если передан null или пустая строка.
+
+7. testGetAllPositions: Проверяет, что все должности, добавленные к сотрудникам, возвращаются уникальными.
+
+8. testGetTotalCompanySalary: Проверяет, что общая зарплата сотрудников компании вычисляется правильно.
+
+9. testGetTotalCompanySalaryNoEmployees: Проверяет, что общая зарплата бизнесу с нулевым количеством сотрудников равна 0.
+
+
 
  */

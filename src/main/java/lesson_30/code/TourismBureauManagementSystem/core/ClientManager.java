@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class ClientManager {
     // Словарь для хранения клиентов с их уникальными ID
     private final HashMap<Integer, Client> clients = new HashMap<>();
+    private int idCounter;
     // private static int idCounter = 0; // Счетчик для уникальных ID клиентов
 
     // Метод для регистрации нового клиента
@@ -62,16 +63,49 @@ public class ClientManager {
                         client.getLastName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
     }
+    // Метод для добавления нового клиента
+    public void addClient(String firstName, String lastName, String contactInfo) {
+        int newId = ++idCounter; // Увеличение счетчика для получения нового уникального ID
+        Client newClient = new Client(firstName, lastName, contactInfo);
+        clients.put(newId, newClient); // Сохраняем клиента в HashMap с уникальным ID
+        System.out.println("Клиент " + firstName + " " + lastName + " добавлен с ID " + newId);
+    }
+    
+    // Метод для удаления клиента по контактной информации
+    public boolean removeClient(String contactInfo) {
+        Client toRemove = null;
+
+        // Находим клиента по контактной информации
+        for (Client client : clients.values()) {
+            if (client.getContactInfo().equals(contactInfo)) {
+                toRemove = client;
+                break;
+            }
+        }
+
+        if (toRemove != null) {
+            // Удаляем клиента из HashMap по его уникальному ID
+            clients.values().remove(toRemove);
+            // Вы можете также удалить клиент по ID, если у вас доступен ID
+            // clients.remove(toRemove.getId());
+            System.out.println("Клиент с контактной информацией " + contactInfo + " удален.");
+        } else {
+            System.out.println("Клиент с контактной информацией " + contactInfo + " не найден.");
+        }
+        return false;
+    }
+
 } // klass ended
+
 /*
  Описание каждого метода
 
-1. registerClient(...): Создает нового клиента и добавляет его в коллекцию clients, используя его уникальный ID.
+1. registerClient(...),addClient: Создает нового клиента и добавляет его в коллекцию clients, используя его уникальный ID.
 2. findClientById(int id): Ищет клиента по его ID и возвращает его в виде Optional<Client>
  для безопасного обращения к объекту.
 3. getAllClients(): Возвращает список всех клиентов в виде List<Client>.
-4. removeClientById(int id): Удаляет клиента по его ID из коллекции. Возвращает true,
-если клиент был успешно найден и удален, и false, если клиента с таким ID не существует.
+4. removeClientById(int id),removeClient: Удаляет клиента по его ID из коллекции. Возвращает true,
+если клиент был успешно найден и удален, и false, если клиента с таким ID не существует, можно и без ID
 5. updateContactInfo(int id, String newContactInfo): Обновляет контактную информацию клиента.
  Если клиент с указанным ID найден, его информация обновляется, и метод возвращает true.
   Если клиента не существует, возвращает false.

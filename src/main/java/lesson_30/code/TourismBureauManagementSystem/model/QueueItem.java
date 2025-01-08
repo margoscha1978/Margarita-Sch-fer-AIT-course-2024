@@ -12,7 +12,7 @@ public class QueueItem {
     private RequestType requestType;
     private LocalDateTime timestamp;
 
-    public QueueItem(String clientId, RequestType requestType, LocalDateTime timestamp) {
+    public QueueItem(int clientId, String requestType, long timestamp) {
         this.clientId = clientId;
         this.requestType = requestType;
         this.timestamp = timestamp;

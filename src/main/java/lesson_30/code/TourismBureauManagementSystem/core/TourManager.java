@@ -62,7 +62,7 @@ public class TourManager {
         return null; // Если тур не найден
     }
 
-    public List<Tour> getAllTours() {
+    public void getAllTours() {
         return Collections.unmodifiableList(new ArrayList<>(tours)); // Возвращаем копию списка туров
     }
 

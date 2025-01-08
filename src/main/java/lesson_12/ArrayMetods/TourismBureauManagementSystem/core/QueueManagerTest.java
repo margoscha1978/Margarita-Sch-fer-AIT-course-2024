@@ -3,6 +3,7 @@ package lesson_12.ArrayMetods.TourismBureauManagementSystem.core;
 import static org.junit.jupiter.api.Assertions.*;
 
 import TourismBureauManagementSystem.core.QueueManager;
+import TourismBureauManagementSystem.model.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 /*
@@ -30,7 +31,7 @@ public class QueueManagerTest {
     // проверим, добавили ли мы клиента в очередь
     @Test
     public void testAddClient() {
-        Client client = new Client("1","Иван","Иванов","ivan@mail.ru");
+        Client client = new Client("Иван","Иванов","ivan@mail.ru");
         queueManager.addClient(client);
         assertEquals(1, queueManager.getQueueSize());
     }
@@ -38,7 +39,7 @@ public class QueueManagerTest {
     // проверяем, удалили ли мы клиента из очереди
     @Test
     public void testRemoveClient() {
-        Client client = new Client("2", "Петр","Петров","petr@mail.ru");
+        Client client = new Client("Петр", "Петров","petr@mail.ru");
         queueManager.addClient(client);
         Client removedClient = queueManager.removeClient();
         assertEquals(client, removedClient);
@@ -55,7 +56,7 @@ public class QueueManagerTest {
     // проверяем наличие следующего клиента в очереди
     @Test
     public void testPeekNextClient() {
-        Client client = new Client("3", "Мария","Петрова","maria@mail.ru");
+        Client client = new Client("Мария", "Петрова","maria@mail.ru");
         queueManager.addClient(client);
         Client nextClient = queueManager.peekNextClient();
         assertEquals(client, nextClient);
@@ -64,7 +65,7 @@ public class QueueManagerTest {
     // проверка, что метод peek не удалил клиента и он остался в списке после добавления
     @Test
     public void testPeekDoesNotRemoveClient() {
-        Client client = new Client("4", "Николай","Федоров","nikolai@mail.ru");
+        Client client = new Client("Николай", "Федоров","nikolai@mail.ru");
         queueManager.addClient(client);
         queueManager.peekNextClient();
         assertEquals(1, queueManager.getQueueSize());
@@ -74,7 +75,7 @@ public class QueueManagerTest {
     @Test
     public void testIsQueueEmpty() {
         assertTrue(queueManager.isQueueEmpty());
-        queueManager.addClient(new Client("5", "Светлана","Сидорова","svetlana@mail.ru"));
+        queueManager.addClient(new Client("Светлана", "Сидорова","svetlana@mail.ru"));
         assertFalse(queueManager.isQueueEmpty());
     }
 
@@ -82,8 +83,8 @@ public class QueueManagerTest {
     @Test
     public void testGetQueueSize() {
         assertEquals(0, queueManager.getQueueSize());
-        queueManager.addClient(new Client("1", "Светлана","Сидорова","svetlana@mail.ru"));
-        queueManager.addClient(new Client("2", "Мария","Петрова","maria@mail.ru"));
+        queueManager.addClient(new Client("Светлана", "Сидорова","svetlana@mail.ru"));
+        queueManager.addClient(new Client("Мария", "Петрова","maria@mail.ru"));
         assertEquals(2, queueManager.getQueueSize());
         queueManager.removeClient();
         assertEquals(1, queueManager.getQueueSize());
@@ -92,8 +93,8 @@ public class QueueManagerTest {
     // проверяем есть ли дубликаты клиентов в очереди
     @Test
     public void testGetQueueItems() {
-        Client client1 = new Client("3", "Мария","Петрова","maria@mail.ru");
-        Client client2 = new Client("1", "Иван","Иванов","ivan@mail.ru");
+        Client client1 = new Client("Мария", "Петрова","maria@mail.ru");
+        Client client2 = new Client("Иван", "Иванов","ivan@mail.ru");
         queueManager.addClient(client1);
         queueManager.addClient(client2);
 

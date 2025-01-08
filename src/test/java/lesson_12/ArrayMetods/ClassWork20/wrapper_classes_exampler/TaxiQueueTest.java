@@ -1,7 +1,5 @@
 package lesson_12.ArrayMetods.ClassWork20.wrapper_classes_exampler;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import ClassWork20.wrapper_classes_exampler.TaxiQueue;
 import org.junit.jupiter.api.Test;
 
