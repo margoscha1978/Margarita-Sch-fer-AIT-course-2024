@@ -1,7 +1,6 @@
 package lesson_30.TourismBureauManagementSystem.model;
 
 import java.util.Objects;
-
 /*
 Поля:
 уникальный идентификатор id;
@@ -25,7 +24,25 @@ public class Client {
         this.contactInfo = contactInfo;
     }
 
-   // геттеры и сеттеры
+   // геттеры
+   // Геттеры
+   public int getClientId() {
+       return clientId;
+   }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    // Методы для обновления имени и фамилии
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -34,25 +51,6 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getContactInfo() {
-        return contactInfo;
-    }
 
     @Override
     public boolean equals(Object o) {
