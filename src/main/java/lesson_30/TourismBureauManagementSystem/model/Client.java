@@ -51,6 +51,17 @@ public class Client {
         this.lastName = lastName;
     }
 
+        public void setContactInfo(String contactInfo) {
+            this.contactInfo = contactInfo;
+        }
+
+        // Метод обновления информации о контакте
+        public void updateContactInfo(String newContactInfo) {
+            if (newContactInfo == null || newContactInfo.isEmpty()) {
+                throw new IllegalArgumentException("Contact information cannot be null or empty");
+            }
+            this.setContactInfo(newContactInfo);
+        }
 
     @Override
     public boolean equals(Object o) {
