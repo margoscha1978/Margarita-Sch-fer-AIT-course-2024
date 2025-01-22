@@ -39,4 +39,5 @@ public abstract class MailItem {
     public double getWeight() {
         return weight;
     }
+
 } // klass ended

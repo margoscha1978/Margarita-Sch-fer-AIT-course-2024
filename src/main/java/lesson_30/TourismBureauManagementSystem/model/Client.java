@@ -11,12 +11,12 @@ contactInfo контактные данные, например электрон
 updateContactInfo(String newContact);
  */
 public class Client {
-    private int clientId;
+   private int clientId;
    private String firstName;
    private String lastName;
    private String contactInfo;
-    // конструктор
 
+    // конструктор
     public Client(int clientId, String firstName, String lastName, String contactInfo) {
         this.clientId = clientId;
         this.firstName = firstName;
@@ -24,7 +24,6 @@ public class Client {
         this.contactInfo = contactInfo;
     }
 
-   // геттеры
    // Геттеры
    public int getClientId() {
        return clientId;
@@ -51,7 +50,7 @@ public class Client {
         this.lastName = lastName;
     }
 
-        public void setContactInfo(String contactInfo) {
+    public void setContactInfo(String contactInfo) {
             this.contactInfo = contactInfo;
         }
 
@@ -86,4 +85,5 @@ public class Client {
         sb.append('}');
         return sb.toString();
     }
+
 } // klass ended
