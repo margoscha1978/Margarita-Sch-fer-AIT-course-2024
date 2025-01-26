@@ -23,8 +23,7 @@ public class RealEstateAgencyTest {
 
     @Test
     public void testCommercialPropertyPrice() {
-        CommercialProperty commercial = new CommercialProperty("Test Address", 150,
-                "warehouse");
+        CommercialProperty commercial = new CommercialProperty("Test Address", 150, "warehouse");
         assertEquals(120000, commercial.calculatePrice());
     }
 
@@ -96,8 +95,7 @@ public class RealEstateAgencyTest {
 
     @Test
     public void testCommercialPropertyWarehousePrice() {
-        CommercialProperty warehouse = new CommercialProperty("Warehouse Address", 200,
-                "warehouse");
+        CommercialProperty warehouse = new CommercialProperty("Warehouse Address", 200, "warehouse");
         double expectedPrice = 200 * 800; // area * price per sqm for warehouse
         assertEquals(expectedPrice, warehouse.calculatePrice(), 0.01);
     }
@@ -114,8 +112,7 @@ public class RealEstateAgencyTest {
     @Test
     public void testRealEstateAgencyAddInvalidProperty() {
         RealEstateAgency agency = new RealEstateAgency();
-        Apartment invalidApartment = new Apartment(null, 3, -70, true);
-        // Invalid due to null address and negative area
+        Apartment invalidApartment = new Apartment(null, 3, -70, true); // Invalid due to null address and negative area
         agency.addProperty(invalidApartment);
         assertTrue(agency.getProperties().isEmpty());
     }
