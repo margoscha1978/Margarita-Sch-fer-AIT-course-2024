@@ -4,7 +4,7 @@ package lesson_34.homework34;
 - это пользовательское исключение, которое наследует класс Exception и используется для обработки случаев,
   когда комната недоступна для бронирования.
  */
-class RoomUnavailableException extends Exception {
+public class RoomUnavailableException extends Exception {
     public RoomUnavailableException(String message) {
         super(message);
     }

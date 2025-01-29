@@ -6,7 +6,7 @@ package lesson_34.homework34;
      и если все в порядке, то записывает имя в соответствующий индекс массива guests.
    - Метод getGuest проверяет, есть ли гость в комнате, и если нет, выбрасывает исключение NoGuestException.
  */
-class Hotel {
+public class Hotel {
     private int[] rooms = {101, 102, 103, 201, 202}; // Массив комнат
     private String[] guests = new String[5]; // Массив гостей
 

@@ -9,7 +9,7 @@ HotelReservationSystem:
 import java.util.HashMap;
 import java.util.Map;
 
-class HotelReservationSystem {
+public class HotelReservationSystem {
     private Map<Integer, Boolean> rooms; // true - занята, false - свободна
 
     public HotelReservationSystem(int[] roomNumbers) {

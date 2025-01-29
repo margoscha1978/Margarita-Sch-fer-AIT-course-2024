@@ -6,7 +6,7 @@ package lesson_34.homework34;
    - Если имя гостя пустое или равно null, также выбрасывается IllegalArgumentException с соответствующим сообщением.
    - Если проверки пройдены, выводится сообщение о том, что комната успешно забронирована.
  */
-class SimpleBooking {
+public class SimpleBooking {
     public void bookRoom(int roomNumber, String guestName) {
         // Проверяем, что номер комнаты корректен
         if (roomNumber <= 0) {
