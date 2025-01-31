@@ -8,7 +8,7 @@ package lesson_34.homework34;
    - Вся логика вызова метода находится в блоке try-catch, который обрабатывает возможные исключения
      и выводит понятные сообщения на экран.
  */
-public class Main {
+public class Main { // отработка класса SimpleBooking
     public static void main(String[] args) {
         SimpleBooking booking = new SimpleBooking();
 

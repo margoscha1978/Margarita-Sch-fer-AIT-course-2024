@@ -1,4 +1,4 @@
-package lesson_34.homework34;
+package lesson_35.ClassWork35;
 /**
  * Исключение RoomUnavailableException
  * Это исключение выбрасывается, когда запрашиваемая комната недоступна для бронирования.
