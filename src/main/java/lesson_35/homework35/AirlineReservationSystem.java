@@ -33,7 +33,7 @@ class AirlineReservationSystem {
 
     public void addFlight(String flightNumber, Map<Integer, Boolean> seats) {
         Map<Integer, String> seatMap = new HashMap<>();
-        for (Map.Entry<Integer, Boolean> entry : seats.entrySet()) {
+        for (Map.Entry<Integer, Boolean> entry : seats.entrySet()) {    
             seatMap.put(entry.getKey(), null); // Изначально все места свободны
         }
         flights.put(flightNumber, seatMap);

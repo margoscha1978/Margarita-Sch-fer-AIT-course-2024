@@ -1,5 +1,5 @@
-package lesson_35.homework35;
-// Пользовательское исключение
+package lesson_36.ClassWork36;
+
 public class NoPassengerException extends RuntimeException {
     public NoPassengerException(String message) {
         super(message);
