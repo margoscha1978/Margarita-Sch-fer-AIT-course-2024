@@ -11,7 +11,7 @@ public class FakerListExample {
 
         for (int i = 0; i < 10; i++) {
             System.out.println("Customer " + (i + 1) + ": " + faker.name().fullName() + ", Email: "
-                    + faker.internet().emailAddress());
+                     + faker.internet().emailAddress());
         }
     }
 
