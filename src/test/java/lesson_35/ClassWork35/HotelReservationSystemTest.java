@@ -57,7 +57,7 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals("The room number 999 is not available", exception.getMessage());
     }
 
-   /* @Test
+    /*@Test
     public void testSuccessfulCancellation() throws Exception {
         system.reserveRoom(202, "John Doe");
         system.cancelReservation(202);
