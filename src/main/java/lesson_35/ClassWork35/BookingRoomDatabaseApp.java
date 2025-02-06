@@ -1,7 +1,7 @@
 package lesson_35.ClassWork35;
 
 import com.github.javafaker.Faker;
-import lesson_34.homework34.NoGuestException;
+import lesson_35.ClassWork35.NoGuestException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

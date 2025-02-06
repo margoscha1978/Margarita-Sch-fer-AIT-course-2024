@@ -1,6 +1,6 @@
 package lesson_35.ClassWork35;
 
-import lesson_34.homework34.RoomUnavailableException;
+import lesson_35.ClassWork35.RoomUnavailableException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;

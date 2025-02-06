@@ -23,7 +23,7 @@ public class HotelReservationSystemApp {
         try {
             hotelReservationSystem.reserveRoom(101, faker.name().lastName());
             hotelReservationSystem.reserveRoom(102, faker.name().lastName());
-        } catch (lesson_34.homework34.RoomUnavailableException e) {
+        } catch (lesson_35.ClassWork35.RoomUnavailableException e) {
             throw new RuntimeException(e);
         }
 
