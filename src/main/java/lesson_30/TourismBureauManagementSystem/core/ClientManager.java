@@ -4,8 +4,10 @@ import lesson_30.TourismBureauManagementSystem.model.Client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ClientManager {
+    private static final Logger logger = Logger.getLogger(ClientManager.class.getName());
     private ArrayList<Client> clients; // Список клиентов
 
     public ClientManager() {
@@ -17,11 +19,11 @@ public class ClientManager {
         for (Client client : clients) {
             if (client.getClientId() == clientId) {
                 clients.remove(client);
-                System.out.println("Клиент с id " + clientId + " успешно удален.");
+                logger.info("Клиент с id " + clientId + " успешно удален.");
                 return true; // Клиент успешно удален
             }
         }
-        System.out.println("Клиент с id " + clientId + " не найден.");
+        logger.warning("Клиент с id " + clientId + " не найден.");
         return false; // Клиент не найден
     }
 
@@ -32,6 +34,7 @@ public class ClientManager {
                 return client; // Клиент найден
             }
         }
+        logger.warning("Клиент с id " + clientId + " не найден.");
         return null; // Клиент не существует
     }
 
@@ -44,13 +47,12 @@ public class ClientManager {
     public boolean updateClientName(int clientId, String newFirstName, String newLastName) {
         Client client = findClientById(clientId);
         if (client != null) {
-            // Предполагается, что есть методы для обновления имени и фамилии
             client.setFirstName(newFirstName);
             client.setLastName(newLastName);
-            System.out.println("Имя клиента с id " + clientId + " успешно обновлено.");
+            logger.info("Имя клиента с id " + clientId + " успешно обновлено.");
             return true; // Имя успешно обновлено
         }
-        System.out.println("Клиент с id " + clientId + " не найден.");
+        logger.warning("Клиент с id " + clientId + " не найден.");
         return false; // Клиент не найден
     }
 
@@ -62,21 +64,30 @@ public class ClientManager {
                 foundClients.add(client); // Добавляем клиента с совпадающим контактом
             }
         }
+        if (foundClients.isEmpty()) {
+            logger.warning("Клиенты с контактной информацией '" + contactInfo + "' не найдены.");
+        }
         return foundClients; // Возвращаем список найденных клиентов
     }
+
     // 6. Метод для добавления клиента в список
     public void addClient(Client client) {
+        if (client == null) {
+            logger.severe("Попытка добавить клиента с нулевым значением.");
+            throw new IllegalArgumentException("Клиент не может быть null.");
+        }
         clients.add(client);
-        System.out.println("Клиент добавлен: " + client);
+        logger.info("Клиент добавлен: " + client);
     }
+
     // 7. Метод для отображения всех клиентов
     public void viewClients() {
-        System.out.println("Список клиентов:");
+        logger.info("Список клиентов:");
         for (Client client : clients) {
-            System.out.println(client);
+            System.out.println(client); // Можно заменить на logger.info
         }
     }
-} // klass ended
+} // класс завершен
 
 /*
  1. removeClient(int clientId)
@@ -93,6 +104,7 @@ public class ClientManager {
  5. findClientByContactInfo(String contactInfo)
  Метод для поиска клиентов по контактной информации.
  Возвращает список клиентов, которые имеют указанную контактную информацию.
- 6. addClient, метод для добавления клиента в список
+ 6. addClient, метод для добавления клиента в список,
+    проверка на null, с последующим выбрасыванием IllegalArgumentException.
  7. Метод viewClients() для отображения всех клиентов
  */

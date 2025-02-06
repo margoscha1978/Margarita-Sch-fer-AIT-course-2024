@@ -47,4 +47,5 @@ public class QueueItem {
                 ", waitingTime=" + getWaitingTime() + " minutes" +
                 '}';
     }
+
 } // klass ended

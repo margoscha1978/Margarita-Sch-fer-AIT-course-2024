@@ -1,6 +1,9 @@
 package lesson_30.TourismBureauManagementSystem.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
+import java.util.logging.Logger;
+
 /*
 Поля:
 уникальный идентификатор тура id;
@@ -13,21 +16,27 @@ import java.util.Objects;
 updateAvailableSeats(int change);
  */
 public class Tour {
+    private static final Logger logger = Logger.getLogger(Tour.class.getName());
+
     private int id; // Уникальный идентификатор тура
     private String destination; // Направление
-    private String date; // Дата начала
+    private LocalDate date; // Дата начала
     private int duration; // Продолжительность
     private double price; // Стоимость
     private int availableSeats; // Количество доступных мест
 
     // Конструктор
-    public Tour(int id, String destination, String date, int duration, double price, int availableSeats) {
+    public Tour(int id, String destination, LocalDate date,int duration,double price , int availableSeats) {
+        if (availableSeats < 0) {
+            throw new IllegalArgumentException("Количество доступных мест не может быть отрицательным.");
+        }
         this.id = id;
         this.destination = destination;
         this.date = date;
         this.duration = duration;
         this.price = price;
         this.availableSeats = availableSeats;
+        logger.info("Tour created: " + this.toString());
     }
 
     // Геттеры
@@ -39,7 +48,7 @@ public class Tour {
         return destination;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -54,12 +63,15 @@ public class Tour {
     public int getAvailableSeats() {
         return availableSeats;
     }
+
+    // Метод обновления количества доступных мест
     public void updateAvailableSeats(int change) {
-        // Проверка на наличие достаточно мест
         if (availableSeats + change < 0) {
+            logger.severe("Failed to update available seats: Not enough available seats.");
             throw new IllegalArgumentException("Недостаточно доступных мест.");
         }
         availableSeats += change; // Обновляем доступные места
+        logger.info("Updated available seats for tour ID " + id + ": " + availableSeats);
     }
 
     @Override
@@ -67,7 +79,7 @@ public class Tour {
         return "Tour{" +
                 "id=" + id +
                 ", destination='" + destination + '\'' +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 ", duration=" + duration +
                 ", price=" + price +
                 ", availableSeats=" + availableSeats +
@@ -87,4 +99,12 @@ public class Tour {
     public int hashCode() {
         return Objects.hash(id, destination, date, duration, price, availableSeats);
     }
+
 } // klass ended
+
+/*
+1. Добавление логирования: Мы будем логировать создание тура и изменения количества доступных мест.
+2. Обработка исключений: Те же принципы, что и в классе Client, мы применим и здесь для лучшего контроля
+   и управления данными
+3. Формат даты: Возможно, имеет смысл использовать LocalDate (или LocalDateTime), чтобы лучше управлять датой.
+ */

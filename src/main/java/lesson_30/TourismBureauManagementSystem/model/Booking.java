@@ -9,23 +9,34 @@ package lesson_30.TourismBureauManagementSystem.model;
 Метод:
 предоставляет метод для отмены бронирования, cancelBooking;
  */
+import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 public class Booking {
+    private static final Logger logger = Logger.getLogger(Booking.class.getName());
+
     private int id; // Уникальный идентификатор бронирования
     private Client client; // Клиент, которому принадлежит бронирование
     private String service; // Услуга, которую забронировал клиент
-    private String dateTime; // Дата и время бронирования
+    private LocalDateTime dateTime; // Дата и время бронирования (измените на LocalDateTime)
     private boolean isCancelled; // Статус отмены бронирования
 
-
     // Конструктор
-    public Booking(int id, Client client, String service, String dateTime) {
+    public Booking(int id, Client client, String service, LocalDateTime dateTime) { // Обновлено
+        if (client == null) {
+            throw new IllegalArgumentException("Client cannot be null.");
+        }
+        if (service == null || service.isEmpty()) {
+            throw new IllegalArgumentException("Service cannot be null or empty.");
+        }
         this.id = id;
         this.client = client;
         this.service = service;
-        this.dateTime = dateTime;
+        this.dateTime = dateTime; // Обновлено
         this.isCancelled = false;
+
+        logger.info("Booking created: " + this.toString());
     }
 
     // Геттеры
@@ -41,8 +52,8 @@ public class Booking {
         return service;
     }
 
-    public String getDateTime() {
-        return dateTime;
+    public LocalDateTime getDateTime() { // Обновлено
+        return dateTime; // Обновлено
     }
 
     public boolean isCancelled() {
@@ -51,7 +62,12 @@ public class Booking {
 
     // Метод для отмены бронирования
     public void cancelBooking() {
+        if (isCancelled) {
+            logger.warning("Attempted to cancel an already cancelled booking: " + this.id);
+            throw new IllegalStateException("Booking is already cancelled.");
+        }
         this.isCancelled = true;
+        logger.info("Booking cancelled: " + this.toString());
     }
 
     @Override
@@ -73,9 +89,21 @@ public class Booking {
         sb.append("id=").append(id);
         sb.append(", client=").append(client);
         sb.append(", service='").append(service).append('\'');
-        sb.append(", dateTime='").append(dateTime).append('\'');
+        sb.append(", dateTime=").append(dateTime); // Обновлено
         sb.append(", isCancelled=").append(isCancelled);
         sb.append('}');
         return sb.toString();
     }
+
 } // klass ended
+
+/*
+1. Логирование: Добавлены сообщения для создания и отмены бронирования. Логируется предупреждение,
+   если попытка отмены уже отменённого бронирования.
+2. Проверка входных параметров:
+   - В конструкторе добавлены проверки на null для клиента и на пустую строку для услуги.
+   - В методе cancelBooking добавлена проверка на статус отмены, чтобы избежать отмены уже отменённого бронирования.
+3. Исключения:
+   - IllegalArgumentException выбрасывается, когда некорректные параметры передаются в конструктор.
+   - IllegalStateException выбрасывается при попытке отмены уже отмененного бронирования.
+ */

@@ -77,5 +77,11 @@
             <artifactId>javacv-platform</artifactId>
             <version>1.5.11</version>
         </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.10.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>
