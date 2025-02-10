@@ -1,29 +1,35 @@
 package lesson_30.TourismBureauManagementSystem.model;
 
 import com.github.javafaker.Faker;
+import lesson_30.TourismBureauManagementSystem.core.DateTimeUtils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class BookingTest {
     public static void main(String[] args) {
         // Создание экземпляра Faker
-        Faker faker = new Faker(new Locale("ru")); // Используем локализацию
+        Faker faker = new Faker(new Locale("de")); // Используем локализацию
 
         // Генерация фейковых данных для клиента
+        LocalDateTime createdAt = LocalDateTime.now();
         Client fakeClient = new Client(
                 faker.number().randomDigitNotZero(),
                 faker.name().firstName(),
                 faker.name().lastName(),
-                faker.internet().emailAddress()
+                faker.internet().emailAddress(),
+                createdAt
         );
 
         // Генерация фейковых данных для бронирования
         int bookingId = faker.number().randomDigitNotZero();
         String service = faker.lorem().words(2).toString();
-        String dateTime = faker.date().future(30, java.util.concurrent.TimeUnit.DAYS).toString(); // Генерация даты в будущем
+        String dateTime = faker.date().future(30, java.util.concurrent.TimeUnit.DAYS).toString();
+        // Генерация даты в будущем
 
         // Создание экземпляра Booking с фейковыми данными
-        Booking booking = new Booking(bookingId, fakeClient, service, dateTime);
+        Booking booking = new Booking(bookingId, fakeClient, service,dateTime);
 
         // Вывод созданного бронирования
         System.out.println(booking);

@@ -25,4 +25,4 @@ public class TimeUntilOperation {
         System.out.printf("До операции осталось: %d дней, %d часов и %d минут.%n", days, hours, minutes);
     }
 
-} // klass endet
+} // klass ended

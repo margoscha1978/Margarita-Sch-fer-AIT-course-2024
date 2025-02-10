@@ -43,13 +43,14 @@ public class QueueManager {
 
     // Метод для создания бронирования
     public void createBooking(int clientId, String service, String dateTime) {
+
         Client client = findClientById(clientId);
         if (client == null) {
             logger.severe("Client not found for booking: " + clientId);
             throw new IllegalArgumentException("Client not found.");
         }
-
-        Booking booking = new Booking(bookings.size() + 1, client, service, dateTime);
+        LocalDateTime bookingDateTime = DateTimeUtils.parseDateTime(dateTime);
+        Booking booking = new Booking(bookings.size() + 1, client, service, bookingDateTime);
         bookings.add(booking);
         logger.info("Booking created: " + booking);
     }

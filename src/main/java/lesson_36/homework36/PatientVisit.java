@@ -16,7 +16,6 @@ package lesson_36.homework36;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class PatientVisit {
     public static void main(String[] args) {

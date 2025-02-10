@@ -1,0 +1,44 @@
+Настройки и обработка дат,времени,зон и часовых поясов:
+
+LocalDate только дата без времени
+LocalTime только время без привязки к определенной дате
+LocalDateTime комбинация времени и даты без привязки к часовому поясу
+ZoneDateTime дата и время с учетом часового пояса
+Instant точный момент времени UTC
+DateTimeFormatter для форматирования и парсинга
+Period,Duration периоды и интервалы времени
+
+Практически вся обработка данных происходит через LocalDate...
+manualDate: найти дату по...
+getYear  \
+getMonth - разложенная обработка под году,месяцу или дням
+getDay   /
+
+manualDate: добавить дни,месяцы и годы...
+plusDay    \
+plusMonths - разложенная обработка под году,месяцу или дням
+plusYear   /
+
+manualDate: убрать временные отрезки...
+minusDay     \
+minusYear    - разложенная обработка под году,месяцу или дням
+minusMonths  /
+
+Поминутная,по секундная верификация времени...
+LocalTime localTime = LocalTime.now();
+LocalTime manuelTime = LocalTime.of();
+LocalDateTime currentDateTime = LocalDateTime.now();
+
+Period: временной период в днях,годах и месяцах...
+Period period = Period.between(startDate,endDate);
+LocaleDate endDate = LocaleDate.now();
+period.getMonths
+period.getDay
+period.getYears
+
+Duration: разница между моментами времени,начало дня и конец дня например...
+Duration duration = Duration.between(starDate.atStarOfDay(),endDate.atStartOfDay());
+duration.toDays
+duration.toHours
+duration.toMinutes
+duration.toMillis(миллисекунды)

@@ -19,11 +19,11 @@ public class Booking {
     private int id; // Уникальный идентификатор бронирования
     private Client client; // Клиент, которому принадлежит бронирование
     private String service; // Услуга, которую забронировал клиент
-    private LocalDateTime dateTime; // Дата и время бронирования (измените на LocalDateTime)
+    private LocalDateTime dateTime; // Дата и время бронирования (установим на LocalDateTime)
     private boolean isCancelled; // Статус отмены бронирования
 
     // Конструктор
-    public Booking(int id, Client client, String service, LocalDateTime dateTime) { // Обновлено
+    public Booking(int id, Client client, String service, LocalDateTime dateTime) { // Обновлено с LocalDateTime
         if (client == null) {
             throw new IllegalArgumentException("Client cannot be null.");
         }
@@ -33,7 +33,7 @@ public class Booking {
         this.id = id;
         this.client = client;
         this.service = service;
-        this.dateTime = dateTime; // Обновлено
+        this.dateTime = dateTime; // Обновлено на LocalDateTime
         this.isCancelled = false;
 
         logger.info("Booking created: " + this.toString());
