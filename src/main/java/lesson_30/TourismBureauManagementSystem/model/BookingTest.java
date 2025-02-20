@@ -1,10 +1,11 @@
 package lesson_30.TourismBureauManagementSystem.model;
 
 import com.github.javafaker.Faker;
-import lesson_30.TourismBureauManagementSystem.core.DateTimeUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Locale;
 
 public class BookingTest {
@@ -24,12 +25,14 @@ public class BookingTest {
 
         // Генерация фейковых данных для бронирования
         int bookingId = faker.number().randomDigitNotZero();
-        String service = faker.lorem().words(2).toString();
-        String dateTime = faker.date().future(30, java.util.concurrent.TimeUnit.DAYS).toString();
-        // Генерация даты в будущем
+        String service = String.join(" ", faker.lorem().words(2)); // Объединяем слова в строку
+        Date futureDate = faker.date().future(30, java.util.concurrent.TimeUnit.DAYS); // Генерация даты в будущем
+
+        // Конвертируем Date в LocalDate
+        LocalDate localDate = futureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         // Создание экземпляра Booking с фейковыми данными
-        Booking booking = new Booking(bookingId, fakeClient, service,dateTime);
+        Booking booking = new Booking(bookingId, fakeClient, service, localDate.atStartOfDay()); // Теперь передаем LocalDate
 
         // Вывод созданного бронирования
         System.out.println(booking);
