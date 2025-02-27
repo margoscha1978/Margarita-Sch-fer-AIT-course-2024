@@ -25,7 +25,8 @@ import java.nio.file.StandardOpenOption;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class TravelReview {
+public class
+TravelReview {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your review:");

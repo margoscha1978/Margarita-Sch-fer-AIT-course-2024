@@ -7,29 +7,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /*
-import employee.Employee;
+import employee.businessprojekt.Business.Employee;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * Тестовый класс для проверки методов класса Employee.
+ * Тестовый класс для проверки методов класса businessprojekt.Business.Employee.
  * Использует JUnit для тестирования создания объекта и методов доступа (getter и setter).
  *
- * Test class for validating the functionality of the Employee class.
+ * Test class for validating the functionality of the businessprojekt.Business.Employee class.
  * Uses JUnit to test object creation and getter and setter methods.
  */
 public class EmployeeTest {
 
     /**
-     * Тест для проверки успешного создания объекта Employee и корректной работы getter и setter методов.
+     * Тест для проверки успешного создания объекта businessprojekt.Business.Employee и корректной работы getter и setter методов.
      * <p>
-     * Test to verify successful creation of an Employee object and proper functionality of getter and setter methods.
+     * Test to verify successful creation of an businessprojekt.Business.Employee object and proper functionality of getter and setter methods.
      */
     @Test
     void testEmployeeCreateAndGetterSettersWereSuccesfull() {
-        // Создаем объект Employee / Creating an Employee object
+        // Создаем объект businessprojekt.Business.Employee / Creating an businessprojekt.Business.Employee object
         Employee employee = new Employee("1", "Doe", "Junior developer", 35000);
 
         // Проверяем, что объект был успешно создан / Verify the object is created successfully
@@ -78,7 +78,7 @@ public class EmployeeTest {
      */
     @Test
     public void testGetters() {
-        // Создаем объект Employee / Create an Employee object
+        // Создаем объект businessprojekt.Business.Employee / Create an businessprojekt.Business.Employee object
         Employee emp = new Employee("1", "Тим Рикки", "Developer", 60000);
 
         // Проверяем, что геттеры возвращают корректные значения / Check that getters return correct values
@@ -97,7 +97,7 @@ public class EmployeeTest {
      */
     @Test
     public void testSetters() {
-        // Создаем объект Employee / Create an Employee object
+        // Создаем объект businessprojekt.Business.Employee / Create an businessprojekt.Business.Employee object
         Employee emp = new Employee("1", "Тим Рикки", "Developer", 60000);
 
         // Изменяем атрибуты сотрудника с помощью сеттеров / Update employee attributes using setters

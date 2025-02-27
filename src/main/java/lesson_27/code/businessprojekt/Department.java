@@ -7,15 +7,15 @@ import java.util.Objects;
 /*
  Поля:
 - String name — название отдела.
-- ArrayList<Employee> — список сотрудников отдела.
+- ArrayList<businessprojekt.Business.Employee> — список сотрудников отдела.
 
  Методы:
 - Конструктор для инициализации названия отдела.
-- void addEmployee(Employee employee) — добавляет сотрудника в отдел.
+- void addEmployee(businessprojekt.Business.Employee employee) — добавляет сотрудника в отдел.
 - void removeEmployee(String employeeId) — удаляет сотрудника по его ID.
-- Employee findEmployee(String employeeId) — находит сотрудника по ID.
+- businessprojekt.Business.Employee findEmployee(String employeeId) — находит сотрудника по ID.
 - double getTotalSalary() — возвращает общую зарплату всех сотрудников отдела.
-- ArrayList<Employee> getEmployees() — возвращает список сотрудников отдела.
+- ArrayList<businessprojekt.Business.Employee> getEmployees() — возвращает список сотрудников отдела.
  */
 public class Department {
     private String name;
@@ -32,15 +32,15 @@ public class Department {
     public void addEmployee(Employee employee) {
        // employees.add(employee);
         if(employee == null){
-            System.out.println("Employee is null");
+            System.out.println("businessprojekt.Business.Employee is null");
         }
         else if(employee.getId() == null || employee.getName() == null
                 || employee.getPosition() == null || employee.getSalary() <= 0){
-            System.out.println("Employee is invalid");
+            System.out.println("businessprojekt.Business.Employee is invalid");
         }
         else {
             employees.add(employee);
-            System.out.println("Employee ID" + employee.getId() + " added");
+            System.out.println("businessprojekt.Business.Employee ID" + employee.getId() + " added");
         }
     }
 
@@ -48,20 +48,20 @@ public class Department {
        // employees.removeIf(e -> e.getId().equals(employeeId));
         boolean found = false;
         if(employeeId == null || employeeId.isEmpty()){
-            System.out.println("Employee ID is null or empty");
+            System.out.println("businessprojekt.Business.Employee ID is null or empty");
         }
         else {
             for (Employee employee : employees) {
                 if(employee.getId().equals(employeeId)){
                     employees.remove(employee);
-                    System.out.println("Employee ID" + employeeId + " removed");
+                    System.out.println("businessprojekt.Business.Employee ID" + employeeId + " removed");
                     found = true;
                     break;
                 }
 
             }
             if(!found) {
-                System.out.println("Employee ID" + employeeId + " not found");
+                System.out.println("businessprojekt.Business.Employee ID" + employeeId + " not found");
             }
 
         }
@@ -69,7 +69,7 @@ public class Department {
 
     public Employee findEmployee(String employeeId) {
         if(employeeId == null || employeeId.isEmpty()){
-            System.out.println("Employee ID is null or empty");
+            System.out.println("businessprojekt.Business.Employee ID is null or empty");
         }
         else {
         for (Employee employee : employees) {
@@ -77,7 +77,7 @@ public class Department {
                 return employee;
             }
         }
-            System.out.println("Employee ID" + employeeId + " not found");
+            System.out.println("businessprojekt.Business.Employee ID" + employeeId + " not found");
         }
         return null;
     }
@@ -92,7 +92,7 @@ public class Department {
         for(Employee employee : employees){
             totalSalary = totalSalary + employee.getSalary();
               //double total = 0;
-              //for (Employee employee : employees) {
+              //for (businessprojekt.Business.Employee employee : employees) {
               //total += employee.getSalary();
         }
         return totalSalary;

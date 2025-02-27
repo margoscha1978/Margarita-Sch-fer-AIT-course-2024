@@ -14,7 +14,7 @@ public class Employee extends Human  {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "businessprojekt.Business.Employee{" +
                 "id=" + id +
                 ", salary=" + salary +
                 ", jobTitle='" + jobTitle + '\'' +

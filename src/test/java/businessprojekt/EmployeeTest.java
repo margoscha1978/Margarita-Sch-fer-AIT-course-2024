@@ -1,6 +1,5 @@
 package businessprojekt;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,11 +77,11 @@ class EmployeeTest {
  Описание тестов
 
 1. testEmployeeCreation():
-   - Тестирует создание объекта Employee и проверяет, что все поля инициализируются правильно.
+   - Тестирует создание объекта businessprojekt.Business.Employee и проверяет, что все поля инициализируются правильно.
    - Использует assertNotNull для проверки, что объект создан, и assertEquals для проверки значений полей.
 
 2. testGetters():
-   - Проверяет, что геттеры возвращают правильные значения для полей объекта Employee.
+   - Проверяет, что геттеры возвращают правильные значения для полей объекта businessprojekt.Business.Employee.
 
 3. testSetters():
    - Проверяет, что сеттеры корректно обновляют значения полей. Здесь мы изменяем имя,
