@@ -2,10 +2,10 @@ package lesson_41.homework41;
 /*
 Класс Product:
     Поля:
-        String name — название
-        double price — цена
-        int quantity — количество на складе
-        transient String promoCode — промо-код (помечен как transient, чтобы не сериализоваться)
+ String name — название
+ double price — цена
+ int quantity — количество на складе
+ transient String promoCode — промо-код (помечен как transient, чтобы не сериализоваться)
     Реализуйте интерфейс Serializable.
  */
 import java.io.Serializable;

@@ -1,5 +1,28 @@
 package lesson_41.ClassWork41;
-
+/*
+2.	Создайте небольшое приложение с методом main:
+	1.	Создайте несколько объектов класса BankAccount (например, 2–3 тестовых счёта) и заполните их полями
+	    (accountNumber, balance, holderName, pinCode).
+	2.	Сериализуйте их в файл accounts.dat:
+	•	Откройте поток FileOutputStream на запись.
+	•	Оберните его в ObjectOutputStream.
+	•	Вызовите writeObject(...) для каждого счёта или сериализуйте сразу коллекцию (например, List<BankAccount>).
+	3.	Десериализуйте объекты:
+	•	Откройте поток FileInputStream (чтение из accounts.dat).
+	•	Оберните его в ObjectInputStream.
+	•	Прочитайте объекты с помощью readObject().
+	4.	Выведите в консоль данные о каждом восстановленном счёте:
+	•	Номер счёта (accountNumber).
+	•	Баланс (balance).
+	•	Имя владельца (holderName).
+	•	Проверьте, что pinCode стал значением по умолчанию (0), т.к.оно было transient.
+	3.	Проверка корректности:
+	•	Убедитесь, что после сериализации и десериализации:
+	•	Сохраняются значения полей accountNumber, balance и holderName.
+	•	pinCode сбрасывается в 0 (благодаря transient).
+	4.	Дополнительное (по желанию):
+	•	Реализуйте простые методы deposit(double amount) и withdraw(double amount) в BankAccount.
+ */
 import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
 
