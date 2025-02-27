@@ -1,5 +1,5 @@
 package ClassWork19a;
-
+/*
 import com.github.javafaker.Faker;
 
 import java.util.Locale;
@@ -44,7 +44,4 @@ public class JavaFakerExamples {
     }
 
 } // klass ended
-
-
-
-
+*/
