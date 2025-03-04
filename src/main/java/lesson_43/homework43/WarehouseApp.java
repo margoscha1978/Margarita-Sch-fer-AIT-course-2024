@@ -3,7 +3,6 @@ package lesson_43.homework43;
 Проверяем работу расширенного класса Warehouse...
  */
 public class WarehouseApp {
-    public class Main {
         public static void main(String[] args) {
             // Создание склада для книг
             Warehouse<Book> bookWarehouse = new Warehouse<>();
@@ -17,6 +16,5 @@ public class WarehouseApp {
             // Количество книг по названию
             System.out.println("Количество книг \"1984\": " + bookWarehouse.getQuantity("1984"));
         }
-    }
 
 } // klass ended
