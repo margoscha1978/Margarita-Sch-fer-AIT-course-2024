@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 // Класс Box, использующий обобщения (generics) для хранения значения любого типа
 // Box class using generics to store a value of any type

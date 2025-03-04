@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 public class SimplePairApp {
     public static void main(String[] args) {

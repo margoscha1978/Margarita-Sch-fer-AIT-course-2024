@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 
 // Класс SimplePair, использующий обобщения для хранения пары значений

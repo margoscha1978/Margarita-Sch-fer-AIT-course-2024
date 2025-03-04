@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;

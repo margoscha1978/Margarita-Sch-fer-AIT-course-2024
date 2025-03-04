@@ -6,7 +6,7 @@ package lesson_43.homework43;
   ? extends Product, который позволяет передавать корзины с любыми подтипами Product.
 4. removeProductFromCart: Метод для удаления товара из корзины по названию.
  */
-public class Main2 {
+public class Main {
     public static void main(String[] args) {
         // Создание корзин
         Cart<Book> bookCart = new Cart<>();

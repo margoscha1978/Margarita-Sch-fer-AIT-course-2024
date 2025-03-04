@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 // Основной класс приложения для демонстрации работы с классом BoxNumber
 // Main application class to demonstrate the use of the BoxNumber class

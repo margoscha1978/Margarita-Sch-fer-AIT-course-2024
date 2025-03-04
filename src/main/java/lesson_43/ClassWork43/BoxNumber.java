@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 // Класс BoxNumber, использующий обобщения для хранения числовых значений (наследников Number)
 // BoxNumber class using generics to store numeric values (subclasses of Number)

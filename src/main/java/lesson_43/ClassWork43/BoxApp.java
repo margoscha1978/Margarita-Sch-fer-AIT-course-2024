@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 import com.github.javafaker.Faker;
 import lesson_41.ClassWork41.Person;

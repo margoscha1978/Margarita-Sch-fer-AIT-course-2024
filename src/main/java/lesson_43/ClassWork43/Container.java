@@ -1,4 +1,4 @@
-package lesson_43.CllassWork43;
+package lesson_43.ClassWork43;
 
 // Интерфейс Container, определяющий методы для работы с контейнером
 // Container interface defining methods for working with a container
