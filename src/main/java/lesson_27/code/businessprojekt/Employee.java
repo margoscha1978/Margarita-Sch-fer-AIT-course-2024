@@ -1,5 +1,5 @@
 package businessprojekt;
-import java.util.ArrayList;
+
 import java.util.Objects;
 
 /*
@@ -21,24 +21,53 @@ public class Employee {
     private double salary;
 
     public Employee(String id, String name, String position, double salary) {
-        this.id = id;
+        this.id = id; // если id не должно изменяться после создания, не использовать сеттер
         this.name = name;
         this.position = position;
         this.salary = salary;
     }
 
     // Геттеры и сеттеры
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public String getPosition() { return position; }
-    public double getSalary() { return salary; }
-    public void setName(String name) { this.name = name; }
-    public void setPosition(String position) { this.position = position; }
-    public void setSalary(double salary) { this.salary = salary; }
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setName(String name) {
+        if (name != null && !name.isEmpty()) {
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setSalary(double salary) {
+        if (salary >= 0) {
+            this.salary = salary;
+        } else {
+            throw new IllegalArgumentException("Salary cannot be negative");
+        }
+    }
 
     public String getInfo() {
-        return "ID: " + id + ", Name: " + name + ", Position: " + position + ", Salary: " + salary;
+        return String.format("ID: %s, Name: %s, Position: %s, Salary: %.2f", id, name, position, salary);
     }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -48,62 +77,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id);
     }
 
-    /*
-         Поля:
-        - String name — название отдела.
-        - ArrayList<businessprojekt.Business.Employee> — список сотрудников отдела.
-
-         Методы:
-        - Конструктор для инициализации названия отдела.
-        - void addEmployee(businessprojekt.Business.Employee employee) — добавляет сотрудника в отдел.
-        - void removeEmployee(String employeeId) — удаляет сотрудника по его ID.
-        - businessprojekt.Business.Employee findEmployee(String employeeId) — находит сотрудника по ID.
-        - double getTotalSalary() — возвращает общую зарплату всех сотрудников отдела.
-        - ArrayList<businessprojekt.Business.Employee> getEmployees() — возвращает список сотрудников отдела.
-         */
-        public static class Department {
-            private String name;
-            private ArrayList<Employee> employees;
-
-            public Department(String name) {
-                this.name = name;
-                this.employees = new ArrayList<>();
-            }
-
-        public String getName() {
-            return name;
-        }
-
-        public void addEmployee(Employee employee) {
-                employees.add(employee);
-            }
-
-            public void removeEmployee(String employeeId) {
-                employees.removeIf(e -> e.getId().equals(employeeId));
-            }
-
-            public Employee findEmployee(String employeeId) {
-                for (Employee employee : employees) {
-                    if (employee.getId().equals(employeeId)) {
-                        return employee;
-                    }
-                }
-                return null;
-            }
-
-            public double getTotalSalary() {
-                double total = 0;
-                for (Employee employee : employees) {
-                    total += employee.getSalary();
-                }
-                return total;
-            }
-
-            public ArrayList<Employee> getEmployees() {
-                return employees;
-            }
-        } // klass ended
 } // klass ended
