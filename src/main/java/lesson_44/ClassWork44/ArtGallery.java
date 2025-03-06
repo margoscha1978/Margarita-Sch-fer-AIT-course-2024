@@ -13,7 +13,7 @@ public class ArtGallery<T> {
     private List<T> paintings = new ArrayList<>();
 
     // Приватный метод для добавления произведения искусства в галерею
-    private void addPainting(T painting){
+    public void addPainting(T painting){
         paintings.add(painting);
     }
 

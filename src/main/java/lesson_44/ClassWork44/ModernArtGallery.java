@@ -15,7 +15,7 @@ public class ModernArtGallery<T extends ArtPiece> {
 
     // Приватный метод для добавления произведения искусства в галерею.
     // Проверяет, что произведение создано не раньше 1900 года.
-    private void addArtPiece(T artPiece) {
+    public void addArtPiece(T artPiece) {
         if (artPiece.getYear() >= 1900) {
             artPieces.add(artPiece); // Добавляем произведение, если оно современное
         } else {
